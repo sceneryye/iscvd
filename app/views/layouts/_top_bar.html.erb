@@ -1,0 +1,168 @@
+  <!-- off-canvas title bar for 'small' screen -->
+    <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+      <div class="title-bar-left">
+        <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+        <span class="title-bar-title">
+          <%=t(:site_name)%>
+        </span>
+      </div>
+      <div class="title-bar-right">
+        <span class="title-bar-title">
+          <a data-open="login_register" style="color:white">login/register</a>
+        </span>
+        <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+      </div>
+    </div>
+
+    <!-- off-canvas left menu -->
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+      <ul class="vertical dropdown menu" data-dropdown-menu>        
+         <li><a href="#"><%=t(:home)%></a></li>
+        <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
+        <li><a target="#" href="#"><%=t(:membership)%></a></li>
+        <li><a target="#" href="#"><%=t(:events)%></a></li>
+        <li><a target="#" href="#"><%=t(:contact)%></a></li>
+      </ul>
+    </div>
+
+    <!-- off-canvas right menu -->
+    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+      <ul class="vertical dropdown menu" data-dropdown-menu>        
+        <li><a href="right_item_2">Right item 2</a></li>
+        <li><a href="right_item_3">Right item 3</a></li>
+      </ul>
+    </div>
+
+    <!-- "wider" top-bar menu for 'medium' and up -->
+    <div id="widemenu" class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text"> <%=t(:site_name)%></li>
+          <li><a data-open="login_register">login/register</a></li>
+          <li class="has-submenu">
+            <a href="#">Item 1</a>
+            <ul class="menu submenu vertical" data-submenu>
+              <li><a href="left_wide_11">Left wide 1</a></li>
+              <li><a href="left_wide_12">Left wide 2</a></li>
+              <li><a href="left_wide_13">Left wide 3</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Item 2</a>
+            <ul class="menu submenu vertical" data-submenu>
+              <li><a href="left_wide_21">Left wide 1</a></li>
+              <li><a href="left_wide_22">Left wide 2</a></li>
+              <li><a href="left_wide_23">Left wide 3</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><input type="search" placeholder="Search"></li>
+          <li><button class="button">Search</button></li>
+        </ul>
+      </div>
+    </div>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+
+<header class="header">
+  <h1 class="main-header hide-for-small-only">&nbsp;<br/><br/><br/></h1>
+  <ul class="header-subnav hide-for-small-only">
+    <li><a href="#"><%=t(:home)%></a></li>
+    <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
+    <li><a target="#" href="#"><%=t(:membership)%></a></li>
+    <li><a target="#" href="#"><%=t(:events)%></a></li>
+    <li><a target="#" href="#"><%=t(:contact)%></a></li>
+  </ul>
+</header>
+
+<div class="reveal small" id="login_register" data-reveal  datdata-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
+  <div class="center row">
+    <ul class="tabs" data-tabs id="sign-in-up">
+      <li class="tabs-title is-active"><a href="#register" aria-selected="true">Sign Up</a></li>
+      <li class="tabs-title"><a href="#login">Sign In</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="sign-in-up">
+      <div class="tabs-panel is-active" id="register">
+         <p>
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="signup-panel">
+                    <p class="welcome">Hello, new user!</p>
+                    <form>
+                      <div class="row collapse">
+                        <div class="small-2  columns">
+                          <span class="prefix"><i class="fi-torso"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <input type="text" placeholder="Full Name">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="small-2 columns">
+                          <span class="prefix"><i class="fi-mail"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <input type="text" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="small-2 columns ">
+                          <span class="prefix"><i class="fi-lock"></i></span>
+                        </div>
+                        <div class="small-10 columns ">
+                          <input type="text" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="small-12 columns ">
+                          <input id="show-password" type="checkbox"><label for="show-password">Show password</label><br>
+                          <a type="submit" class="button expanded">Sign Up</a>
+                          <a href="#">Forgot your password?</a><br>
+                        </div>
+                      </div>
+                    </form>                      
+                  </div>
+                </div>
+               </div>
+          </p>
+      </div>
+      <div class="tabs-panel" id="login">
+         <p>
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="signup-panel">
+                    <p class="welcome">Welcome back!</p>
+                    <form>
+                      <div class="row collapse">
+                        <div class="small-2 columns">
+                          <span class="prefix"><i class="fi-mail"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <input type="text" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="small-2 columns ">
+                          <span class="prefix"><i class="fi-lock"></i></span>
+                        </div>
+                        <div class="small-10 columns ">
+                          <input type="text" placeholder="Password">
+                        </div>
+                      </div>
+                      <a type="submit" class="button expanded">Sign In</a>
+                    </form>
+                  </div>
+                </div>
+               </div></p>
+      </div>
+    </div>
+  </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  

@@ -1,0 +1,9 @@
+<% provide :title, @user.nickname if @user %>
+<% content_for(:profile_content) do%>
+  <h2><%= t(page) %></h2><hr>
+  <% if @data.blank? %>
+    <p><%= t(:no_topics) %></p>
+  <% else %>
+    <%= render @data %>
+  <% end %>
+<% end %>
