@@ -1,0 +1,315 @@
+#selection-block {
+    background-color: #efd069;
+    max-width: 800px;
+    min-height: 34px;
+    padding: 7px 8px;
+    text-align: center;
+}
+
+.selection-block-inner {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.form-block {
+    display: none;
+}
+
+.prep-block,
+.not-edited-prep-block,
+.prep-edit-block {
+    width: 97%;
+    height: auto;
+    border: 1px solid #d8d8d8;
+    background-color: transparent;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.edited-prep-block {
+    width: 97%;
+    padding: 10px;
+    resize: vertical;
+    border: 1px solid #d8d8d8;
+    background-color: transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.prep-edit-block, .prep-block {
+    display: none;
+    margin-top: 10px;
+}
+
+.choice-recipe {
+    padding-left: 20px;
+}
+
+.select-recipe, .select-category,
+.leftovers-select-category, .recipe_leftovers_dd {
+    float: left;
+    width: 100%;
+}
+
+.select-recipe select, .select-category select {
+    width: 300px;
+}
+
+.prep-instructions, .edit-prep-instructions, .edit-other-prep-instructions {
+    display: none;
+}
+
+.recipe-delimiter {
+    border-bottom: 1px solid #aaaaaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.a-pp-popup {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.week-date {
+    margin-top: 10px;
+    height: 40px;
+    clear: both;
+}
+
+.graze-input {
+    width: 500px;
+}
+
+.other-input {
+    width: 65%;
+}
+
+#meal-plan {
+    with: 100%;
+}
+
+.edit-mode {
+    color: #3AB4CF;
+    text-decoration: none;
+}
+
+#meal_plan_meta_box .add-mode,
+#meal_plan_meta_box .edit-day-meal {
+    color: #3AB4CF;
+    text-decoration: none;
+}
+
+
+
+.edit-prep-link {
+    margin-left: 15px;
+    width: 24px;
+    padding-bottom: 1px;
+}
+
+.meal-number {
+    margin-left: 14px;
+    margin-top: 4px;
+
+    font-weight: bold;
+}
+
+#week-plan {
+    width: 100%;
+    font-family: Georgia, ​Times, ​serif;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.inline {
+    display: inline;
+}
+
+div.number-of-servings {
+    margin-top: 20px;
+}
+
+#pp_popup_form table td {
+    padding: 3px;
+}
+
+.field-error {
+    color: #ff0000;
+}
+
+.field-warning {
+    color: #ba6c00;
+}
+
+.plan-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url(ellipsis.xml#ellipsis)
+}
+
+.recipe-excerpt {
+    width: 500px;
+    height: 18px;
+}
+
+#pp_plan_form td {
+    font-size: 14px;
+}
+
+#pp_actions {
+    display: none;
+}
+
+#popupForm {
+    position: relative;
+    max-width: 800px;
+    width: 800px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.prep-need-update {
+    color: #884F00;
+    font-style: italic;
+}
+
+.other-block {
+    clear: both;
+}
+
+.group-fields {
+    margin-top: 10px;
+}
+.mark-was-edited {
+    border-color: #FF9900;
+    background-color: #FFF8F0;
+}
+.mp-popup-add-buttons {
+    clear: both;
+    padding-top: 10px;
+}
+
+.popup-inline-fields {
+    float: left;
+    padding-right: 12px;
+}
+
+.error {
+    color: red;
+}
+
+.meal-actions {
+    width: 140px;
+}
+
+.dialog-for-glide {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 18059;
+}
+
+.week-error-block {
+    color: red;
+    bottom: 0;
+    left: 0;
+}
+
+.block-hidden {
+    display: none;
+}
+
+.block-visible {
+    display: block;
+}
+
+@media screen and (max-width: 536px) {
+    #popupForm {
+        width: auto;
+        max-width: 300px;
+    }
+
+    .graze-input, .recipe-excerpt {
+        width: 100%;
+    }
+
+    .selection-block-inner {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 537px) and (max-width: 767px) {
+    #popupForm {
+        width: auto;
+        max-width: 700px;
+    }
+
+    .graze-input, .recipe-excerpt {
+        width: 100%;
+    }
+
+    .selection-block-inner {
+        width: 100%;
+    }
+}
+
+.row-input {
+    clear: both;
+    padding-top: 1px;
+}
+
+.visible {
+    display: block;
+}
+.other-quantity
+{
+    width: 40px;
+}
+.edited-prep-block_popup{
+    margin-top: 6px;
+    width: 100%;
+    padding: 10px;
+    resize: vertical;
+    border: 1px solid #d8d8d8;
+    background-color: transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.prep-block_popup{
+    margin-top: 6px;
+    width: 97%;
+    height: auto;
+    border: 1px solid #FF9900;
+    background-color: #FFF8F0;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.reset-prep-button{
+    display: inline-block;
+    margin-left: 15px;
+    width: 24px;
+    padding-bottom: 1px;
+}
+
+.ui-autocomplete.ui-front{
+    z-index: 100004;
+}
+
+.allergies-popupForm{
+    width: 400px;
+}
+.servings-icon-question{
+    width: 13px;
+    cursor: pointer;
+}
