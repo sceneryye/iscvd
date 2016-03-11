@@ -26,7 +26,7 @@ RailsOnForum::Application.configure do
   ActionMailer::Base.smtp_settings = {
       :address => "mail.iscvd.org",
       :port => 587,
-      :domain => "iscvd.org",
+      :domain => "iscvd.com",
       :authentication => :login,
       :user_name => "info@iscvd.org",
       :password => "iscvDInfo@)!^"
