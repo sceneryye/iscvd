@@ -1,0 +1,27 @@
+.button-plan {
+    line-height: 30px;
+}
+.button.delete-day-meal {
+    background: none;
+    background-color: #b23e42;
+}
+.button.add-day-meal,
+.button.edit-day-meal{
+    padding-bottom: 1px;
+    width: 24px;
+    margin-right: 15px;
+}
+.button.add-day-meal{
+    background: none;
+    background-color: #0074A2;
+}
+.modified-label{
+    color: #2378D8;
+}
+.deleted-label{
+    color: #B23E42;
+}
+.reset-prep-button{
+    background: none;
+    background-color: #b23e42;
+}

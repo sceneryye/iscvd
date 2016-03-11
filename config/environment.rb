@@ -4,6 +4,6 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 RailsOnForum::Application.initialize!
 
-PIC_PATH= "/mydata/foodiegroup/public"
+PIC_PATH= "/iscvd/public"
 
-PATH_PREFIX = '/foodies'
+PATH_PREFIX = '/iscvd'
