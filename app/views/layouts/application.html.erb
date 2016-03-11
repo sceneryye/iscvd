@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= csrf_meta_tags %>
+</head>
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
+<body>
  <div class="off-canvas-wrapper">
   <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
     <%=render '/layouts/top_bar'%>  
 
     <!-- original content goes in this container -->
     <div class="off-canvas-content" data-off-canvas-content>
-        <div class="row">
-      <div class="large-12 columns">
-        <header class="header">
-          <h1 class="main-header hide-for-small-only">&nbsp;</h1>
-          <ul class="header-subnav hide-for-small-only">
-            <li><a href="#"><%=t(:home)%></a></li>
-            <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
-            <li><a target="#" href="#"><%=t(:membership)%></a></li>
-            <li><a target="#" href="#"><%=t(:events)%></a></li>
-            <li><a target="#" href="#"><%=t(:contact)%></a></li>
-          </ul>
-        </header>
+      <div class="row">
+        <div class="large-12 columns">
+          <header class="header">
+            <h1 class="main-header hide-for-small-only">&nbsp;</h1>
+            <ul class="header-subnav hide-for-small-only">
+              <li><a href="#"><%=t(:home)%></a></li>
+              <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
+              <li><a target="#" href="#"><%=t(:membership)%></a></li>
+              <li><a target="#" href="#"><%=t(:events)%></a></li>
+              <li><a target="#" href="#"><%=t(:contact)%></a></li>
+            </ul>
+          </header>
+        </div>
       </div>
-    </div>
-       <%= yield %>
+      <%= yield %>
     </div>
 
-  <!-- close wrapper, no more content after this -->
+    <!-- close wrapper, no more content after this -->
   </div>
 </div>      
-    <%=render '/layouts/footer'%>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-  </body>
+<%=render '/layouts/footer'%>
+
+</body>
 </html>

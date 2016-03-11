@@ -103,6 +103,13 @@ class UsersController < ApplicationController
   end
 end
 
+def send_emails
+  email = params[:email]
+  (UserMailer.send_group_emails email, 'Mmall').deliver_now
+
+render json: {len: params[:len]}.to_json
+end
+
 def destroy
   logout
   @user.destroy

@@ -2,14 +2,10 @@ RailsOnForum::Application.routes.draw do
 
   namespace :admin do
     resources :reports
-    get '/users_list', to: 'reports#users_list'
-    get '/groupbuys_list', to: 'reports#groupbuys_list'
-    get '/topics_list', to: 'reports#topics_list'
-    get '/participants_list', to: 'reports#participants_list'
-    get '/tags_list', to: 'reports#tags_list'
+    get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
   end
 
-
+  post '/send_emails', to: 'users#send_emails', as: :send_emails
   mount Ckeditor::Engine => '/ckeditor'
   
   get    '/login',     to: 'sessions#new',     as: :login
