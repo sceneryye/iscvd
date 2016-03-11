@@ -67,6 +67,7 @@ rerun.txt
 pickle-email-*.html
 /dbback
 /config/initializers/wechat.rb
+/config/database.yml
 
 
 
