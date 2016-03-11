@@ -13,9 +13,9 @@ default: &default
   encoding: utf8
   reconnect: false
   host: localhost
-  database: iscvd
+  database: iscvdo5_web
   pool: 5
-  username: root
+  username: iscvdo5_root
   password: iscvD@)!^
 
 development:
