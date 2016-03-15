@@ -21,15 +21,18 @@ RailsOnForum::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'www.iscvd.com'
+  # host = 'www.iscvd.com'
+  host = 'www.iscvd.org'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-      :address => "mail.iscvd.org",
+      :address => 'mail.iscvd.org',
       :port => 587,
-      :domain => "iscvd.com",
+      :domain => "iscvd.org",
       :authentication => :login,
       :user_name => "info@iscvd.org",
-      :password => "iscvDInfo@)!^"
+      :password => "info2016",
+      :enable_starttls_auto => true,
+      :openssl_verify_mode  => 'none'
   }
 
   # Print deprecation notices to the Rails logger.
