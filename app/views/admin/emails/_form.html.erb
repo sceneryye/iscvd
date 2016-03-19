@@ -1,0 +1,18 @@
+
+  <%= form_for @email, url: admin_emails_path do |f| %>
+<div class="row">
+      <div class="columns medium-7 medium-offset-2">
+        <%= f.text_field :title, class: 'form-control', placeholder: '请输入邮件标题...' %>
+      </div>
+</div>
+      <div class="row">
+      <div class="columns medium-7 medium-offset-2">
+        <%= f.cktext_area :content, class: 'form-control', placeholder: '请输入邮件内容...', rows: 20 %>
+      </div>
+    </div>
+      <div class="row">
+      <div class="columns medium-7 medium-offset-2">
+      <%= f.submit '提交', class: 'button primary' %>
+        </div>
+      </div>
+  <% end %>

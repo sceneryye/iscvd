@@ -1,8 +1,9 @@
 RailsOnForum::Application.routes.draw do
 
-  resources :emails
+
   namespace :admin do
     resources :reports
+    resources :emails
     get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
   end
 

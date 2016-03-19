@@ -1,42 +1,60 @@
+  <% @emails.each do |email| %>
+      <div>
+        <input type="radio" name="title" value="ok" data-id="<%= email.id %>"><%= email.title %></input>
+      </div>
+      
+  <% end %>
+
+
 <button class="button success send-emails">群发邮件</button>
 <div class="send-status hidden">
-<span>已经发送完<span>
-<span class="count">0</span>
-<span>封邮件</span>
-<span class="send-done hidden">邮件已经全部发送完毕！</span>
+  <span>已经发送完</span>
+  <span class="count">0</span>
+  <span>封邮件</span>
+  <span class="send-done hidden">邮件已经全部发送完毕！</span>
 </div>
 
 <script>
-$(document).ready(function(){
-  var emails = [];
-  var url = "<%= send_emails_path %>";
-    <% @emails.each do |email| %>
+  $(document).ready(function () {
+    var emailId = '';
+    $('input').on('click', function(){
+      if($(this).prop('checked')) {
+        emailId = $(this).data('id');
+      }
+    })
+    var emails = [];
+    var url = "<%= send_emails_path %>";
+    <% @email_addresses.each do |email| %>
     emails.push("<%= email %>");
     <% end %>
     var len = emails.length;
     console.log(emails);
-    $('.send-emails').on('click', function(){
+    $('.send-emails').on('click', function () {
+      if(emailId.length < 1) {
+        alert('请先选择需要发送的邮件!');
+        return false;
+      }
       $('.send-done').addClass('hidden');
       $('.send-status').removeClass('hidden');
-      <% @emails.each_with_index do |email, index| %>
+      <% @email_addresses.each_with_index do |email, index| %>
       var email = "<%= email %>";
       var index = "<%= index %>";
       var counts = 0;
-        $.post(url, {email: email, len: index}, function(e){
-          counts += 1;
-          if(counts == len) {
-            $('.send-done').removeClass('hidden');
-          }
-            $('.count').text(counts);
-        });
+      $.post(url, {email: email, len: index, email_id: emailId}, function (e) {
+        counts += 1;
+        if (counts == len) {
+          $('.send-done').removeClass('hidden');
+        }
+        $('.count').text(counts);
+      });
       <% end %>
     })
   });
-    
+
 </script>
 
 <style>
-.hidden {
-  display: none;
-}
+  .hidden {
+    display: none;
+  }
 </style>
