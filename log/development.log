@@ -12797,3 +12797,40 @@ Started GET "/assets/application.self-d82ccdc31fa754c38b4bf7068aa3bf51613cd809c4
 
 
 Started GET "/assets/application.self-d82ccdc31fa754c38b4bf7068aa3bf51613cd809c47021fc2c2534aa9ecfdbe6.css?body=1" for ::1 at 2016-03-15 10:10:35 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (38.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateEmails (20160319121220)
+  [1m[35m (66.6ms)[0m  CREATE TABLE `emails` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255) NOT NULL, `content` text NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160319121220')
+  [1m[36m (11.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (4.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'ckeditor_assets'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `ckeditor_assets`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'emails'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `emails`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
