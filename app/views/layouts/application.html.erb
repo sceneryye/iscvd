@@ -17,21 +17,8 @@
     <%=render '/layouts/top_bar'%>  
 
     <!-- original content goes in this container -->
-    <div class="off-canvas-content" data-off-canvas-content>
-      <div class="row">
-        <div class="large-12 columns">
-          <header class="header">
-            <h1 class="main-header hide-for-small-only">&nbsp;</h1>
-            <ul class="header-subnav hide-for-small-only">
-              <li><a href="#"><%=t(:home)%></a></li>
-              <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
-              <li><a target="#" href="#"><%=t(:membership)%></a></li>
-              <li><a target="#" href="#"><%=t(:events)%></a></li>
-              <li><a target="#" href="#"><%=t(:contact)%></a></li>
-            </ul>
-          </header>
-        </div>
-      </div>
+    <div class="off-canvas-content" data-off-canvas-content style="background:url(/assets/bg_blue.jpg) repeat">
+    
       <%= yield %>
     </div>
 

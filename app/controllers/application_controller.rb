@@ -20,34 +20,12 @@ class ApplicationController < ActionController::Base
 
   def login(user)
     session[:user_id] = user.id
-    if user.group.try(:name) =='Foodie Group Buying Group'
+    if user.local=='zh'
       session[:locale]='zh'
     else
       session[:locale]='en'
     end
     
-  end
-
-  def auto_login
-    if !params[:openid].blank? && current_user.nil?
-      session[:openid] = params[:openid].split('_shop')[0]
-
-      session[:avatar] = params[:avatar]
-      session[:nickname] = params[:nickname]
-      user = User.where(:weixin_openid=>session[:openid])
-      if user.size>0
-        @user = user.first do |u|
-          u.avatar = session[:avatar]
-          u.nickname = session[:nickname]
-        end.save
-        login user.first
-        redirect_to root_path #清空传过来的参数
-
-      end
-    end
-    if current_user.nil?
-      session[:locale] = 'zh'
-    end
   end
 
   
@@ -102,50 +80,4 @@ class ApplicationController < ActionController::Base
     nonce_str
   end
 
-  def create_sign hash
-    key = Supplier.where(:name => '贸威').first.partner_key
-    stringA = hash.select{|key, value|value.present?}.sort.map do |arr|
-     arr.map(&:to_s).join('=')
-   end
-   stringA = stringA.join("&")
-   string_sing_temp = stringA + "&key=#{key}"
-   sign = (Digest::MD5.hexdigest string_sing_temp).upcase
- end
-
- def create_sign_for_js hash
-  key = Supplier.where(:name => '贸威').first.partner_key
-  stringA = hash.select { |key, value| value.present? }.sort.map do |arr|
-    arr.map(&:to_s).join('=')
-  end
-  stringA = stringA.join("&")
-  sign = (Digest::SHA1.hexdigest stringA)
-end
-
-
-
-def get_jsapi_ticket
-  supplier = Supplier.where(:id => 78).first
-  return supplier.jsapi_ticket if supplier.expires_at.to_i > Time.now.to_i && supplier.jsapi_ticket.present?
-  access_token = get_jsapi_access_token
-  get_url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket'
-  res_data_json = RestClient.get get_url, {:params => {:access_token => access_token, :type => 'jsapi'}}
-  res_data_hash = ActiveSupport::JSON.decode res_data_json
-  if res_data_hash['errmsg'] == 'ok'
-    jsapi_ticket = res_data_hash['ticket']
-    supplier.update_attributes(:jsapi_ticket => jsapi_ticket)
-  end
-  jsapi_ticket
-end
-
-def get_jsapi_access_token
-  supplier = Supplier.where(:id => 78).first
-  return supplier.access_token if supplier.expires_at.to_i > Time.now.to_i
-  get_url = 'https://api.weixin.qq.com/cgi-bin/token'
-  res_data_json = RestClient.get get_url, {:params => {:appid => supplier.weixin_appid, :grant_type => 'client_credential', :secret => supplier.weixin_appsecret}}
-  res_data_hash = ActiveSupport::JSON.decode res_data_json
-  access_token = res_data_hash["access_token"]
-  expires_at = Time.now.to_i + res_data_hash['expires_in'].to_i
-  supplier.update_attributes(:access_token => access_token, :expires_at => expires_at)
-  access_token
-end
 end
