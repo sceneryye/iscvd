@@ -1,22 +1,24 @@
   <!-- off-canvas title bar for 'small' screen -->
     <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
       <div class="title-bar-left">
-        <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+        <button class="menu-icon" type="button" data-open="offCanvasLeft"><i class='fa fa-bars'></i></button>
         <span class="title-bar-title">
-          <%=t(:site_name)%>
+          ISCVD
         </span>
       </div>
-      <div class="title-bar-right">
-        <span class="title-bar-title">
-          <a data-open="login_register" style="color:white">login/register</a>
-        </span>
-        <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+       <div class="title-bar-right" data-responsive-toggle="example-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle><i class='fa fa-search'></i></button>
       </div>
     </div>
 
     <!-- off-canvas left menu -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-      <ul class="vertical dropdown menu" data-dropdown-menu>        
+      <ul class="vertical dropdown menu" data-dropdown-menu>   
+        <li><div class="button-group">
+        <a class="tiny button" data-open="login_register" >Login</a>
+        <a class="tiny button" data-open="login_register" >Join ICVS</a>   
+      </div> 
+      </li> 
          <li><a href="#"><%=t(:home)%></a></li>
         <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
         <li><a target="#" href="#"><%=t(:membership)%></a></li>
@@ -25,20 +27,20 @@
       </ul>
     </div>
 
-    <!-- off-canvas right menu -->
-    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
-      <ul class="vertical dropdown menu" data-dropdown-menu>        
-        <li><a href="right_item_2">Right item 2</a></li>
-        <li><a href="right_item_3">Right item 3</a></li>
-      </ul>
-    </div>
+    <!-- right menu -->
+
+
 
     <!-- "wider" top-bar menu for 'medium' and up -->
     <div id="widemenu" class="top-bar">
-      <div class="top-bar-left">
+      <div class="top-bar-left hide-for-small-only">
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="menu-text"> <%=t(:site_name)%></li>
-          <li><a data-open="login_register">login/register</a></li>
+          <li> <div class="button-group">
+            <a class="tiny button" data-open="login_register" >Login</a>
+            <a class="tiny button" data-open="login_register" >Join ICVS</a>   
+          </div> 
+          </li>
           <li class="has-submenu">
             <a href="#">Item 1</a>
             <ul class="menu submenu vertical" data-submenu>

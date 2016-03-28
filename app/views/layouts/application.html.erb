@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
- <div class="off-canvas-wrapper">
-  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
     <%=render '/layouts/top_bar'%>  
 
     <!-- original content goes in this container -->
@@ -38,5 +40,8 @@
 </div>      
 <%=render '/layouts/footer'%>
 
-</body>
+
+<link rel="stylesheet" media="screen" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  </body>
 </html>

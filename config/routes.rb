@@ -1,9 +1,17 @@
 RailsOnForum::Application.routes.draw do
 
+ get 'admin'=>'admin/sessions#new'
 
   namespace :admin do
+
+    # subdomain = nil
+    # subdomain = "www" if Rails.env == "production"
+    # constraints :subdomain => subdomain do
+    get 'logout'=>'sessions#destroy'
+   
     resources :reports
     resources :emails
+    resources :sessions
     get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
   end
 
@@ -17,9 +25,7 @@ RailsOnForum::Application.routes.draw do
   resource :search
 
 
-  resources :users,   only: [:create, :update, :destroy] do
-     resources :user_instetests
-  end
+  resources :users,   only: [:create, :update, :destroy] 
 
 
   get '/register',    to: 'users#new',  as: :register
