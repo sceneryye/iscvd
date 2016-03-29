@@ -1,39 +1,49 @@
 class User < ActiveRecord::Base
   has_secure_password
+  before_save :downcase_email
+  before_create :create_activation_digest
+  validates :email, presence: {message: '邮箱不能为空!'}, uniqueness: {message: '邮箱已被占用!'}
+  validates :role, presence: true
+  validates :sex, presence: true
+  attr_accessor :remember_token, :activation_token
 
-  has_many :topics,   dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :participants, dependent: :destroy
-  has_many :events, dependent: :destroy
-  has_many :groupbuys, dependent: :destroy
-  has_many :user_interests, dependent: :destroy
-  has_many :user_addresses, dependent: :destroy
-  has_many :logistics, dependent: :destroy
-
-  belongs_to :group
-
-
-  validates :username,   presence:   true,
-  uniqueness: { case_sensitive: false },
-  length:     { in: 2..40 }
-                         #,format:     { with: /\A[a-zA-Z][a-zA-Z0-9_-]*\Z/ }
-                        # ,exclusion:  { in: ['oturum_ac'] }
-
-                        validates :mobile,    presence:   true,
-                        uniqueness: { case_sensitive: false }
-
-  # validates :email,      presence:   true,
-  #                        uniqueness: { case_sensitive: false },
-  #                        email:      true
-
-  #validates :terms_of_service, acceptance: { accept: 'yes' }
-
-
-  def to_param
-    username
+  def self.digest string
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 
-  def default_address
-    self.user_addresses.where(default: 1).first || self.user_addresses.first
-  end 
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def authenticated? attribute, token
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+  def activated?
+    self.activated == true
+  end
+
+  private
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
+
+  def downcase_email
+    self.email = email.downcase
+  end
+
 end

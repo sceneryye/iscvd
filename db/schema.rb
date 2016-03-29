@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319121220) do
+ActiveRecord::Schema.define(version: 20160329135154) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -37,12 +37,11 @@ ActiveRecord::Schema.define(version: 20160319121220) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",           limit: 255,               null: false
     t.string   "name",               limit: 255
-    t.string   "mobile",             limit: 255,               null: false
+    t.string   "mobile",             limit: 255,                 null: false
     t.string   "sex",                limit: 1,   default: "0"
     t.string   "email",              limit: 255
-    t.string   "password_digest",    limit: 255,               null: false
+    t.string   "password_digest",    limit: 255,                 null: false
     t.string   "role",               limit: 1,   default: "0"
     t.string   "avator",             limit: 500
     t.string   "profession",         limit: 45
@@ -53,6 +52,10 @@ ActiveRecord::Schema.define(version: 20160319121220) do
     t.integer  "events_count",       limit: 4,   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "activation_digest",  limit: 255
+    t.string   "remember_digest",    limit: 255
+    t.boolean  "activated",                      default: false
+    t.datetime "activated_at"
   end
 
 end

@@ -1,9 +1,28 @@
-<% provide :title, t(:login) %>
-<div class="large-4 columns large-centered panel radius">
-  <%= form_for :session, url: session_path do |f|%>
-    <%= f.text_field :user_name,  placeholder: '账号' %><br>
-    <%= f.password_field :password,  placeholder: '密码' %><br>
-    <%= f.submit '确定', class: 'button radius large-12 columns' %>
-  <% end %>
-   <div style="text_algin:center">还没有账号？去<%= link_to "注册", register_path, class: 'button radius small' %></div>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h3>登录</h3>
+    <%= form_for :session, url: login_path, html: {class: 'form-horizontal'} do |f| %>
+        <div class="form-group">
+          <%= f.label :email, "邮箱", class: 'col-sm-2 control-label' %>
+          <div class="col-md-10">
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, "密码", class: 'col-sm-2 control-label' %>
+          <div class="col-md-10">
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <%= f.check_box :remember_me %>
+           <span class="remember-me">记住我</span>
+          </div>
+        </div>
+        <div class="col-md-10 col-md-offset-2 submit-button">
+          <%= f.submit '提交', class: 'form-control btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
 </div>

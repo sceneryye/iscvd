@@ -1,25 +1,12 @@
-<% provide :title, current_user.present? ? t(:welcome) : t(:new_user) %>
-<div class="row">
-  <%if !signed_in?%>
-  <div class="large-7 medium-6 small-12 columns">
-    <% if session[:locale]=='zh' %>
-      <h2>欢迎您加入!</h2>
-      <% else %>
-        <h2>Welcome to !</h2>
-      <% end %>
-      <%= form_for @user do |f| %>  
-        <input name="nickname" value="<%= params[:nickname] %>" type="hidden" />
-        <div class="small-12 columns">
-          <%= f.text_field :mobile, required: true, placeholder: '手机' %>
-          <%= show_error_message('请输入您的手机号码.') %>
-        </div>
-        <div class="small-12 columns">
-          <%= f.submit '提交审核',class: 'button right' %>
-        </div>
-      <% end %>
-    <% else %>
-      <%= render 'form' %>
-    <% end %>
+<div class="container">
+  <div class="col-md-4 col-md-offset-2">
+    <span class="sign-title">上海儿童营养中心</span>
+    <span class="sign-sec-title">欢迎注册</span>
+  </div>
+  <div class="col-md-10 col-md-offset-1 form1">
+    <%= render 'form' %>
   </div>
 </div>
-</div>
+
+
+

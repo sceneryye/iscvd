@@ -1,6 +1,6 @@
-<% provide :title, t(:edit_user) %>
-<%= content_for(:profile_content) do%>
-  <div class="large-12 columns">
-    <%= render 'form' %>
-  </div>
-<% end %>
+<h1>Editing User</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

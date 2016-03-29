@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'paperclip'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'nokogiri'
+gem 'rest-client'
 
 #group :assets do
     gem 'sass-rails'#, '~> 5.0.3'

@@ -1,106 +1,80 @@
 #encoding:utf-8
+require 'rest-client'
 class UsersController < ApplicationController
   before_action :select_user, only: [:show, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] do
-    validate_permission! select_user
+
+  def index
+    @users = User.all
+  end
+
+
+  def show
   end
 
   def new
-    if !session[:openid].blank?
-      user = User.where(weixin_openid: session[:openid])
-      if user.present?
-        login(user.first)
-      end
-    end
     @user = User.new
-    @groups = Group.all
-  end
-
-  def create
-    if user_params[:password].nil?
-      user_params[:password] = user_params[:mobile]
-      user_params[:username] = user_params[:mobile]
-    end
-    @user = User.new(user_params)
-    @user.weixin_openid = session[:openid]
-    @user.avatar = session[:avatar]
-    @user.nickname = session[:nickname]
-    if params[:from] == 'share_from_foodie'
-      @user.weixin_openid = params[:openid]
-      @user.avatar = params[:avatar]
-      @user.nickname = params[:nickname]
-      @user.group_id = params[:group_id]
-    end
-
-    if @user.save
-      login(@user)
-      if params[:return_url]
-        return redirect_to URI.decode(params[:return_url])
-      else
-        return redirect_to root_url, notice: '注册成功!'
-      end
-    else
-      render :new
-    end
-  end
-
-  def show
-
-    type = params[:type] || 'topic'
-
-    case type
-      when 'topic'
-        @user = User.includes(:topics).find_by_username(params[:id])
-        if @user
-          @data = @user.topics.includes(:forum)
-        end
-      when 'comment'
-        @user = User.includes(:comments).find_by_username(params[:id])
-        @data = @user.comments.includes(:topic)
-      #@data = @user.comments.includes(:events)
-      when 'event'
-        @user = User.includes(:events).find_by_username(params[:id])
-        @data = @user.events
-      when 'groupbuy'
-        @user = User.includes(:groupbuys).find_by_username(params[:id])
-        @data = @user.groupbuys
-      when 'participant'
-        @user = User.includes(:participants).find_by_username(params[:id])
-        @data = @user.participants.includes(:event)
-    end
-
-    render layout: "profile", locals: {page: type}
+    render layout: false
   end
 
   def edit
-    render layout: "profile"
   end
 
-  def update
-    uploaded_io = params[:file]
-
-    if !uploaded_io.blank?
-      extension = uploaded_io.original_filename.split('.')
-      filename = "#{Time.now.strftime('%Y%m%d%H%M%S')}.#{extension[-1]}"
-      # filepath = "#{PIC_PATH}/teachResources/devices/#{filename}"
-      filepath = "#{PIC_PATH}/avatars/#{filename}"
-      File.open(filepath, 'wb') do |file|
-        file.write(uploaded_io.read)
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      if @user.activated?
+        log_in @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        redirect_to @user
+      else
+        message = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
       end
-      user_params.merge!(:avatar => "/avatars/#{filename}")
-    end
-
-    update_params = user_params
-
-    if update_params.has_key?(:password)
-      update_params.delete([:password, :password_confirmation])
-    end
-
-    if @user.update(update_params)
-      redirect_to profile_url(@user), notice: '个人信息修改成功'
     else
-      render :edit, layout: "profile"
+      redirect_to root_path
     end
+  end
+
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def send_sms_validate_code
+    phone = params[:mobile]
+    return render text: 'mobile number is empty' if phone.empty?
+    post_url = 'http://222.73.117.158:80/msg/HttpBatchSendSM'
+    code = "尊敬的用户，您注册上海营养中心的密码为#{rand(100000).to_s.ljust(6, '0')}, 请妥善保管，感谢您的注册！"
+    var = {code: code}.to_json
+    post_hash = {account: 'jiekou-clcs-10', pswd: 'Tch788788', mobile: phone, msg: code, needstatus: true}
+    res_code_json = RestClient.get post_url, {params: post_hash}
+    Rails.logger.info res_code_json
+    return render json: res_code_json
+    res_code_hash = ActiveSupport::JSON.decode res_code_json
+    res_code_hash[:rand_code] = code
+    code_json = res_code_hash.to_json
+    return render json: code_json
   end
 
   def send_emails
@@ -110,19 +84,17 @@ class UsersController < ApplicationController
     render json: {len: params[:len]}.to_json
   end
 
-  def destroy
-    logout
-    @user.destroy
-    redirect_to root_url
-  end
 
   private
 
-  def user_params
-    params.require(:user).permit!
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
   end
 
-  def select_user
-    @user = User.find_by_username(params[:id])
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
+                                 :password_confirmation)
   end
 end

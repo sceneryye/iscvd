@@ -1,65 +1,45 @@
-<%= form_for @user, data: {abide: ''},:html => {:multipart => true} do |f| %>
-  <%= render 'layouts/form_errors', object: @user %>
-  <% if params[:return_url] %>
-  <input name="return_url" value="<%= params[:return_url] %>" type="hidden">
-  <% end %>
 
-  <div class="row"> 
-    <div class="small-12 columns">
-      <%= f.text_field :username, required: true, placeholder: '登录名'%>
-      <%= show_error_message('请输入您的登录名') %>
-    </div>
-    <div class="small-12 columns">
-      <%= f.text_field :mobile, required: true, placeholder: '手机' %>
-      <%= show_error_message('请输入您的手机号码.') %>
-    </div>
+  <div class="col-md-6 col-md-offset-3 sign-form">
+    <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
+        <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <div class="small-12 columns">
-      <%= f.email_field :email, required: true, placeholder: :email%>
-      <%= show_error_message('请输入您的email.') %>
-    </div>
-    <div class="small-12 columns">
-      <%= f.password_field :password, required: true, placeholder: '密码' %>
-      <%= show_error_message('请输入8个字符以上的密码.') %>
-    </div>
-    <div class="small-12 columns">
-      <%= f.password_field :password_confirmation, required: true, placeholder: '确认密码' %>
-      <%= show_error_message('请输入与上面密码相同的8个以上的字符.') %>
-    </div>  
-    <div class="small-6 columns">
-      <%= f.label :avatar %>
-    </div>
-    <div class="small-6 columns">
-       <%= file_field_tag :file%>
-       <%= show_error_message('请上传您的头像') %>
-    </div>
-    <div class="small-12 columns">
-      <%= f.text_field :name, placeholder: '姓名' %>
-      <%= show_error_message %>
-    </div>
-    <div class="small-3 columns">性别：</div>
-    <div class="small-5 columns">
-      <%=f.radio_button :sex, 1%>
-      <label for="user_sex_1" class="radio-label">男</label>
-    </div>
-    <div class="small-4 columns">
-      <%=f.radio_button :sex, 2%>
-      <label for="user_sex_2" class="radio-label">女</label>
-    </div>
-    <div class="small-12 columns">
-      <%= show_error_message %>
-    </div>
-    <div class="small-12 columns">
-      <%= f.text_field :profession,placeholder:'职业'%>
-    </div>
-    <div class="small-12 columns">
-      <%= f.text_field :location,placeholder:'地区'%>
-    </div>    
-    <div class="small-6 columns">
-      <%=link_to '去登录', login_path,class: 'button left' %>
-    </div>
-    <div class="small-12 columns">
-       <%= f.submit class:'tiny button radius right' %>
-    </div>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :mobile, '手机', class: 'col-md-3 control-label' %>
+          <div class="col-md-9">
+            <%= f.text_field :mobile, class: 'form-control mobile' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, '邮箱', class: 'col-md-3 control-label' %>
+          <div class="col-md-9">
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, '密码', class: 'col-md-3 control-label' %>
+          <div class="col-md-9">
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, '确认密码', class: 'col-md-3 control-label' %>
+          <div class="col-md-9">
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="submit-button col-md-9 col-md-offset-3">
+          <%= f.submit '提交', class: 'btn btn-primary form-control' %>
+        </div>
+    <% end %>
   </div>
-<% end %>

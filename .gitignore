@@ -68,8 +68,8 @@ pickle-email-*.html
 /dbback
 /config/initializers/wechat.rb
 /config/database.yml
-
-
+/bin
+/log
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
