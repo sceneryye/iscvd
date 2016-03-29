@@ -1,209 +1,326 @@
-@import "foundation_and_overrides";
-/* Add imports of custom sass/scss files here */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require foundation_and_overrides
 
-/*header*/
-.header {
-  text-align: center;
-  background: url('/assets/stethoscope_logo.jpg') no-repeat center center;
-  background-size: cover;
-  padding: 4rem;  
-  .main-header {
-    color: #666;
-  }
+ *= require_tree .
+ */
+
+/* Variables */
+
+// Adjust width accordingly (use even #'s)
+$logo-width: 200px;
+// Reduce px value to increase space between logo and menu text
+$logo-padding: $logo-width - 32px; 
+// Leave alone
+$logo-margin: - ($logo-width / 2);
+
+/* Small Navigation */
+.logo-small {
+  float: right;
 }
 
-.header-subnav {
-  float: none;
+.title-bar {
+  padding: 0 .5rem;
+}
+
+.menu-icon,
+.title-bar-title {
   position: relative;
-  top: 4rem;
-  text-align: center;
-  margin-bottom: 0;
+  top: 10px;
+}
 
-  li {
-    float: none;
-    display: inline-block;
+/* Medium-Up Navigation */
+@media only screen and (min-width: 40rem) { 
 
-    a {
-      padding: 0.9rem 1rem 0.75rem;
-      font-size: 0.875rem;
-      color: #fff;
-      text-transform: uppercase;
-      display: block;
-      font-weight: bold;
-      letter-spacing: 1px;
+  .logo-wrapper {
+    position: relative;
+    
+    .language {
+      width: $logo-width;
+      height:  92px;
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      top: -6px;
+      margin-left: $logo-margin;
+    }
+  }
 
-      &.is-active {
-        background: rgba(250,250,250,0.7);
-        color: #333;
-      }
-
-      &:hover {
-        background: rgba(250,250,250,0.7);
-        color: #333;
-        transition: all .25s ease-in-out;
-      }
+  // Right part
+  .top-bar-right {
+    width: 50%;
+    padding-left: $logo-padding;
+    
+    ul {
+      float: left;
+    }
+  }
+  
+  // Left part
+  .top-bar-left {
+    width:  50%;
+    padding-right: $logo-padding;
+    
+    ul {
+      float: right;
     }
   }
 }
 
 
-
-/*footer*/
-.hero {
-  background: url('/assets/3hearts.jpg') no-repeat center center;
-	background-size: cover;
-  height: 50vh;
-  overflow: hidden;
+ #top_nav {
+	background: #fff;
+	border-radius: 0 0 5px 5px;
+	border: 0;
+	padding: 0;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+	margin-bottom: 20px;
+}
+#top_nav .menu-link{ 
+	padding: .6em;	
+}
+#top_nav .menu-text{ 
+	padding: .1em;	
+}
+#top_nav .active,
+#top_nav .menu-link:hover,
+#top_nav .menu-link:focus {	
+  background-color:  #fb0401; 
+  color: #fff;
 }
 
-.row {
-  max-width: 1200px;
+/*General*/
+
+body {
+    font-family: Quicksand;
 }
+
+.button.hollow.secondary:hover, .button.hollow.secondary:focus {
+    border-color: #F78536;
+    color: #fff;
+}
+
+
+.button:hover, .button:focus {
+   border-color: #E67526;
+    color: #fff;
+    background-color:#E67526;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Quicksand;
+}
+
+
+.display-table {
+    display: table;
+}
+
+.va-align {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/*General*/
+
+.intro {
+    background: url(../img/fourway.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 700px;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    background-position: bottom center;
+}
+
+/* About */
+.about {
+    background-color: #fff;
+    text-align: center;
+    margin: 40px;
+}
+
+
+/* About */
+
+
+
+
+/* Colors */
+
+.orange {
+    color: #F78536;
+}
+
+.light-blue-grey {
+    color: #DFEBED;
+}
+
+.blue {
+    color: #497285;
+}
+
+.dark-blue {
+    color: #2B4450;
+}
+
+.orange-bg {
+    background-color: #F78536;
+}
+
+.light-blue-grey-bg {
+    background-color: #DFEBED;
+}
+
+.blue-bg {
+    background-color: #497285;
+}
+
+.dark-blue-bg {
+    background-color: #2B4450;
+}
+
+
+/*Colors*/
+
+
+/*Team*/
+
+.team {
+    background-color: #fff;
+    margin: 40px;
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom :16px;
+}
+
+    .team-member img {
+        margin-bottom: 30px;
+    }
+
+    .team-member h5 {
+        color: #F78536;
+    }
+
+    .team-member p {
+        font-weight: 300;
+    }
+/*Team*/
+
+/* Info Section */
+
+.info {
+    background-color: #2B4450;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Info Section */
+
+
+/*Blog */
+
+.blog {
+    background-color: #fff;
+    margin: 30px;
+}
+
+    .blog .label {
+        margin-bottom: 5px;
+    }
+
+.blog-item {
+    margin-bottom: 10px;
+}
+
+    .blog-item img {
+        margin-bottom: 10px;
+    }
+
+    .blog-item h5 {
+        color: #497285;
+    }
+
+/*Blog */
+
+
+
+/* Subscribe */
+
+.subscribe {
+    background-color: #497285;
+    color: #fff;
+    min-height: 100px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/* Subscribe */
+
+
+/*Map*/
+
+.map {
+    background-color: #F78536;
+    color: #fff;
+    min-height: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Map */
+
+
+/* Contact */
+
+.contact {
+    background-image: url('fourway.jpg');
+    background-position: center center;
+    min-height: 200px;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Contact */
+
+/*Footer */
 
 .footer {
-  background-color: $primary-color;//#292c2f;
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 1rem;
-  
-  .social a {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background-color: #33383b;
-    border-radius: 2px;
-    font-size: 1.5rem;
-    color: #fff;
+    background-color: #fff;
     text-align: center;
-    line-height: 2rem;
-    margin: 0 3px 0 0;
-  }
-  
-  .copywrite {
-    color: #8f9296;
-    font-size: 0.875rem;
-    margin: 1rem 0 1rem 0;
-  }
-  
-  .footer-form {
-    textarea, input {
-      border-radius: 3px;
-      background-color: rgba($white, 0.8);;
-      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-      border: none;
-      resize: none;
-      font: inherit;
-      font-size: 0.875rem;
-      font-weight: normal;
-      color: #d1d2d2;
-      padding: 1.3rem;
-    }
-    
-    label {
-      color: #fff;
-      font-size: 1.2rem;
-      margin: 0 0 1rem 0;
-      font-weight: bold;
-    }
-    
-    .submit {
-      border-radius: 3px;
-      background-color: #33383b;
-      color: #ffffff;
-      border: 0;
-      padding: 1rem 3.5rem;
-      font-weight: bold;
-      float: right;
-      margin: 0 1rem 2rem 0;
-    }
-  }
-  
-  .footer-links a {
-    list-style: none;
-    font-weight: normal;
-    color: #fff;
-    padding: 3rem 0 2rem;
-    margin: 0;
-    font-size: 0.875rem;
-    
-    &::after {
-      content: "•";
-      padding: 0 0.2rem 0 0.4rem;
-    }
-    
-    &:last-child::after {
-      content: "";
-      padding: 0 0.4rem 0 0.8rem;
-    }
-  }
-  
-  @media only screen and (min-width: 40.063em) {
-    padding: 4rem;
-    
-    p {
-      text-align: left;
-    }
-    
-    .social {
-      text-align: left;
-      margin: 0;
-    }
-    
-    .footer-form {
-      .contact {
-        position: absolute;
-        left: -45%;
-        top: 10%;
-      }
-    }
-    
-  }
-}
-   
-.logo {
-  color: #fff;
-  font-size: 1.5rem;
-  
-  i {
-    margin-right: 0.5rem;
-  }
+    padding: 10px;
 }
 
-/*login*/
-.center.row {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+.footer-social i {
+    color: #497285;
+    margin-left: 20px;
+    font-size: 22px;
 }
 
-.signup-panel {
-  padding: 5px;
-  i {
-    font-size: 30px;
-    line-height: 50px;
-    color: #999;
-  }
-  form {
-    input, span {
-      height: 50px;
+    .footer-social i:hover {
+        color: #F78536;
     }
-  }
-  .welcome {
-    font-size: 26px;
-    text-align: center;
-    margin-left: 0;
-  }
-  
-}
 
-section.active {
-  padding-top: 75px !important;
-}
 
-p.title {
-  border-bottom: 1px solid #cccccc !important;
-}
-
-.content {
-  height: 450px;
-}
+/*Footer */
