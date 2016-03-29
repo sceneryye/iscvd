@@ -2,42 +2,39 @@
 <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
   <a class="logo-small show-for-small-only" href="#"><img src="http://placehold.it/50x50?text=LOGO" /></a>
   <button class="menu-icon" type="button" data-toggle><i class='fa fa-bars'></i></button>
-  <div class="title-bar-title">Menu</div>
 </div>
 
 <!-- Medium-Up Navigation -->
 <div  style="background: #e6e6e6;">
-<div class="row columns">
-<nav class="top-bar" id="nav-menu">
+  <div class="row columns">
+    <nav class="top-bar" id="nav-menu">
+      <div class="logo-wrapper hide-for-small-only">
+           <div class="language button-group">
+                <a class="tiny button" data-open="login_register" >中 &nbsp;文</a>
+                <a class="tiny button" data-open="login_register" >English</a>   
+            </div>
+      </div>
 
-  <div class="logo-wrapper hide-for-small-only">
-       <div class="language button-group">
-            <a class="tiny button" data-open="login_register" >中 &nbsp;文</a>
-            <a class="tiny button" data-open="login_register" >English</a>   
-        </div>
-  </div>
-
-  <!-- Left Nav Section -->
-  <div class="top-bar-left">
-    <ul class="vertical medium-horizontal menu">
-      <li><a href="#">Contact Us </a></li>
+      <!-- Left Nav Section -->
+      <div class="top-bar-left">
+        <ul class="vertical medium-horizontal menu">
+          <li><a href="#">Contact Us </a></li>
           <li><a href="#">Membership</a></li>
           <li><a href="#">Donate</a></li></li>
-    </ul>
+        </ul>
+      </div>
+      
+      <!-- Right Nav Section -->
+      <div class="top-bar-right">
+        <ul class="vertical medium-horizontal menu" data-dropdown-menu>
+          <li>
+            <a href="#">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-  
-  <!-- Right Nav Section -->
-  <div class="top-bar-right">
-    <ul class="vertical medium-horizontal menu" data-dropdown-menu>
-      <li>
-        <a href="#">Sign In</a>
-      </li>
-    </ul>
-  </div>
-
-</nav>
-  </div>
-  </div>
+</div>
   
 
   <!-- off-canvas title bar for 'small' screen -->
@@ -77,13 +74,12 @@
           <img src='img/logo-ISCVD.png' alt='International Society for Cardiavascular Diseases'>
       </div>
       <div  class="columns large-7 medium-8 small-12" id="wider">
-      <p style="margin-bottom:5px; text-align:center;height:2.6em;">
+      <div class='row collapse'  style="margin-bottom:5px; text-align:center;height:2.6em;">
+       <div class="columns small-7 large-offset-2"><input type="search" placeholder="Search"></div>
+         <div class="columns small-3"><button class="button">Search</button></div>
+       </div>
 
-       <span><input type="search" placeholder="Search"><span>
-            <spanv><button class="button">Search2</button></span>
-
-      </p>
-          <ul class="menu align-right"  style=";margin-bottom:5px;">         
+          <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
           <li><a href="#"><%=t(:home)%></a></li>
           <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
           <li><a target="#" href="#"><%=t(:membership)%></a></li>
