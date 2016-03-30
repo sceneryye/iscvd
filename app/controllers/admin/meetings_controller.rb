@@ -1,6 +1,7 @@
 #encoding:utf-8
-class MeetingsController < ApplicationController
-
+module Admin
+class MeetingsController < Admin::BaseController
+	layout 'admin'
 	def index
 
 		@meetings = Meeting.all
@@ -18,7 +19,6 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.new(meeting_params)
 		if @meeting.save    
 		    redirect_to root_url
-		  end
 		else
 		  redirect_to admin_path
 		end
@@ -58,4 +58,5 @@ class MeetingsController < ApplicationController
 		params.require(:meeting).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
 	                             :password_confirmation)
 	end
+end
 end

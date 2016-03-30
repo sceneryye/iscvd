@@ -1,6 +1,7 @@
 #encoding:utf-8
-class PagesController < ApplicationController
-
+module Admin
+class PagesController < Admin::BaseController
+	layout 'admin'
 	def index
 
 		@pages = Page.all
@@ -8,19 +9,17 @@ class PagesController < ApplicationController
 	
 	def new
 	    @page = Page.new
-	    render layout: false
 	 end
 
 	def edit
 	end
 
 	def create
-		@page = Page.new(Page_params)
+		@page = Page.new(page_params)
 		if @page.save    
-		    redirect_to root_url
-		  end
+		    redirect_to admin_pages_path
 		else
-		  redirect_to admin_path
+		  redirect_to new_admin_page_path
 		end
 	end
 
@@ -41,7 +40,7 @@ class PagesController < ApplicationController
 	def destroy
 		@page.destroy
 		respond_to do |format|
-		  format.html { redirect_to Pages_url, notice: 'Page was successfully destroyed.' }
+		  format.html { redirect_to admin_pages_url, notice: 'Page was successfully destroyed.' }
 		  format.json { head :no_content }
 		end
 	end
@@ -55,7 +54,7 @@ class PagesController < ApplicationController
 
 
 	def page_params
-		params.require(:Page).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
-	                             :password_confirmation)
+		params.require(:page).permit(:title, :language, :body, :head_pics, :slug, :from, :author, :layout, :page_categories_id,:type,:meeting_id)
 	end
+end
 end

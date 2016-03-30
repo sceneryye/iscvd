@@ -1,12 +1,16 @@
 
-  <div class="col-md-6 col-md-offset-3 sign-form">
-    <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
-        <% if @user.errors.any? %>
+<section class="panel">
+    <header class="panel-heading">
+       New Category of Pages
+    </header>
+    <div class="panel-body">
+       <%= form_for [:admin, @page_category], html: {class: 'form-horizontal'} do |f| %>
+        <% if @page_category.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+              <h2><%= pluralize(@page_category.errors.count, "error") %> prohibited this page_category from being saved:</h2>
 
               <ul>
-                <% @user.errors.full_messages.each do |message| %>
+                <% @page_category.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
               </ul>
@@ -14,32 +18,20 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :mobile, '手机', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :mobile, class: 'form-control mobile' %>
+          <%= f.label :name, 'name', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :name, class: 'form-control' %>
           </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :email, '邮箱', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :email, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, '密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, '确认密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="submit-button col-md-9 col-md-offset-3">
-          <%= f.submit '提交', class: 'btn btn-primary form-control' %>
-        </div>
+        </div>     
+      <div class="form-group"> 
+        <div class="submit-button col-md-6 col-md-offset-3">
+          <%= f.submit 'Submit', class: 'btn btn-primary form-control' %>
+        </div> 
+        <div class="submit-button col-md-6 col-md-offset-3">
+          <%= link_to 'Cancle', class: 'btn btn-primary form-control' %>
+        </div> 
+      </div>
     <% end %>
   </div>
+</section>

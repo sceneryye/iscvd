@@ -1,5 +1,5 @@
 class Admin::EmailsController < ApplicationController
-  layout 'admin'
+  layout 'admin1'
   before_action :set_email, only: [:show, :edit, :destroy]
 
   def new

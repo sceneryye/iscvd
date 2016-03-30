@@ -1,5 +1,7 @@
 #encoding:utf-8
-class DocumentsController < ApplicationController
+module Admin
+class MeetingAttendeesController < Admin::BaseController
+	layout 'admin'
 	# before_action {@forums = Forum.all}
 
 	def index
@@ -10,4 +12,5 @@ class DocumentsController < ApplicationController
 	def show
 		
 	end
+end
 end

@@ -1,9 +1,10 @@
 #encoding:utf-8
-class PageCategoriesController < ApplicationController
-
+module Admin
+class PageCategoriesController < Admin::BaseController
+	layout 'admin'
 	def index
 
-		@page_category = PageCategory.all
+		@page_categories = PageCategory.all
 	end
 
 	def new
@@ -14,12 +15,11 @@ class PageCategoriesController < ApplicationController
 	end
 
 	def create
-		@page_category = PageCategory.new(Page_category_params)
+		@page_category = PageCategory.new(page_category_params)
 		if @page_category.save    
-		    redirect_to root_url
-		  end
+		    redirect_to admin_page_categories_path
 		else
-		  redirect_to admin_path
+		  redirect_to new_admin_page_category_path
 		end
 	end
 
@@ -54,7 +54,7 @@ class PageCategoriesController < ApplicationController
 
 
 	def page_category_params
-		params.require(:Page_category).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
-	                             :password_confirmation)
+		params.require(:page_category).permit(:name)
 	end
+end
 end

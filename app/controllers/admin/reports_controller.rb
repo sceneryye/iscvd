@@ -1,6 +1,6 @@
 class Admin::ReportsController < ApplicationController
   # before_action :autheorize_admin!
-  layout 'admin'
+  layout 'admin1'
   def index
   end
 

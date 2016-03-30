@@ -1,12 +1,16 @@
 
-  <div class="col-md-6 col-md-offset-3 sign-form">
-    <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
-        <% if @user.errors.any? %>
+<section class="panel">
+    <header class="panel-heading">
+       New Page
+    </header>
+    <div class="panel-body">
+       <%= form_for [:admin, @page], html: {class: 'form-horizontal'} do |f| %>
+        <% if @page.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+              <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
               <ul>
-                <% @user.errors.full_messages.each do |message| %>
+                <% @page.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
               </ul>
@@ -14,32 +18,91 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :mobile, '手机', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :mobile, class: 'form-control mobile' %>
+          <%= f.label :title, 'title', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :title, class: 'form-control' %>
           </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :page_category_id, 'page_category_id', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :page_category_id, class: 'form-control' %>
+          </div>
+        </div>     
+        <div class="form-group">
+          <%= f.label :language, 'language', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :language, class: 'form-control' %>
+          </div>
+        </div>  
+        <div class="form-group">
+          <%= f.label :slug, 'slug', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :slug, class: 'form-control' %>
+          </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :head_pics, 'head_pics', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :head_pics, class: 'form-control' %>
+          </div>
+
+        </div> 
+        <div class="form-group">
+          <%= f.label :layout, 'layout', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :layout, class: 'form-control' %>
+          </div>          
+        </div> 
+        <div class="form-group">
+          <%= f.label :type, 'type', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :type, class: 'form-control' %>
+          </div>
+        </div>  
+        <div class="form-group">
+          <%= f.label :meeting_id, 'meeting_id', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :meeting_id, class: 'form-control' %>
+          </div>
+        </div>     
+        <div class="form-group">
+          <%= f.label :from, 'from', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :from, class: 'form-control' %>
+          </div>
+        </div>     
+        <div class="form-group">
+          <%= f.label :author, 'author', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :author, class: 'form-control' %>
+          </div>
+        </div> 
+        <div class="form-group">
+            <%= f.label :body, 'body', class: 'col-md-2 control-label' %>
+            <div class="col-sm-10">
+                <%= f.cktext_area :body, class: 'form-control ckeditor', placeholder: 'body', rows: 20 %>
+            </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :email, '邮箱', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :email, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, '密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, '确认密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="submit-button col-md-9 col-md-offset-3">
-          <%= f.submit '提交', class: 'btn btn-primary form-control' %>
-        </div>
+      <div class="form-group"> 
+        <div class="submit-button col-md-6">
+          <%= f.submit 'Submit', class: 'btn btn-primary form-control' %>
+        </div> 
+        <div class="submit-button col-md-6">
+          <%= link_to 'Cancle', class: 'btn btn-primary form-control' %>
+        </div> 
+      </div>
     <% end %>
   </div>
+</section>

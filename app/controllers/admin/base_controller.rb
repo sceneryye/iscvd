@@ -4,7 +4,7 @@ class Admin::BaseController < ActionController::Base
 
 	protect_from_forgery
 
-	layout 'admin'
+	layout 'admin1'
 	require "pp"
 
 	

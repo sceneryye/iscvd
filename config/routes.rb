@@ -2,6 +2,8 @@ RailsOnForum::Application.routes.draw do
 
   get 'admin' => 'admin/sessions#new'
 
+
+#match '/static-events/',     :to => 'static_events#index', :as => :static_events
   namespace :admin do
 
     # subdomain = nil
