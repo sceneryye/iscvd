@@ -7,6 +7,8 @@ class PagesController < ApplicationController
 	end
 
 	def show
-		@page  = Page.find(page_id)
+		@page  = Page.find(params[:id])
+		render :layout=> @page.layout.present? ? @page.layout : 'application'
 	end
 end
+

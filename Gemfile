@@ -29,3 +29,5 @@ gem 'rest-client'
 gem 'bcrypt'
 gem 'email_validator'
 gem 'redcarpet'
+gem "friendly_id"
+gem 'will_paginate'
