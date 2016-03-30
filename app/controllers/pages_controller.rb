@@ -1,5 +1,5 @@
 #encoding:utf-8
-class DocumentsController < ApplicationController
+class PagesController < ApplicationController
 	# before_action {@forums = Forum.all}
 
 	def index

@@ -33,5 +33,7 @@ RailsOnForum::Application.routes.draw do
 
   resource :home, only: [:index]
 
+  resource :pages, only: [:index,:show]
+
   root 'home#index'
 end

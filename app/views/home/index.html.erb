@@ -1,25 +1,34 @@
 <% provide :title, t(:home) %>
-
-    <div class="intro">
-        <div class="row">
-            <div class="large-12 columns">
-                <div style="background-color:rgba(0,0,0,0.7); min-height:100%; width:100%;">
-                    <div class="display-table" style="height:600px; width:100%;">
-                        <div class="va-align">
-                            <div>
-                                <a href="#">English</a> | <a href="#">中文</a>
-                            </div>
-                            <br>
-                            <h2>Welcome to ISCVD<br></h2>
-                            <img src='/assets/logo_with_title.png' alt='International Society for Cardiavascular Diseases'><br>
-                            <button class="secondary hollow button">Member Log In</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row columns small-12">
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+  <ul class="orbit-container">
+    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+    <li class="is-active orbit-slide">
+      <img class="orbit-image" src="/images/meeting_picture01.jpg" alt="Space">
+      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+    </li>
+    <li class="orbit-slide">
+      <img class="orbit-image" src="/images/meeting_picture02.jpg" alt="Space">
+      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+    </li>
+    <li class="orbit-slide">
+      <img class="orbit-image" src="/images/meeting_picture03.jpg" alt="Space">
+      <figcaption class="orbit-caption">Encapsulating</figcaption>
+    </li>
+    <li class="orbit-slide">
+      <img class="orbit-image" src="/images/meeting_picture04.jpg" alt="Space">
+      <figcaption class="orbit-caption">Outta This World</figcaption>
+    </li>
+  </ul>
+  <nav class="orbit-bullets">
+    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+  </nav>
+</div>
     </div>
-
     <div class="about">
         <div class="row">
             <div class="large-12 columns">
