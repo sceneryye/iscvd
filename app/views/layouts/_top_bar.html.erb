@@ -58,10 +58,10 @@
         <a class="tiny button" data-open="login_register" >Join ICVS</a>   
       </div> 
       </li> 
-         <li><%=link_to t(:home),root_path%></li>
-        <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
+        <li><%=link_to t(:home),root_path%></li>
+        <li><%=link_to t(:about_us),page_path('aboutus'),class:'is-active'%></a></li>
         <li><a target="#" href="#"><%=t(:membership)%></a></li>
-        <li><a target="#" href="#"><%=t(:events)%></a></li>
+        <li><%=link_to t(:meetings),meetings_path%></a></li>
         <li><%=link_to t(:news),pages_path%></a></li>
       </ul>
     </div>
@@ -79,13 +79,13 @@
          <div class="columns small-3"><button class="button">Search</button></div>
        </div>
 
-          <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
-          <li><%=link_to t(:home),root_path%></li>
-          <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
-          <li><a target="#" href="#"><%=t(:membership)%></a></li>
-          <li><a target="#" href="#"><%=t(:events)%></a></li>
-          <li><%=link_to t(:news),pages_path%></a></li>
-          </ul>
+        <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
+        <li><%=link_to t(:home),root_path%></li>
+        <li><%=link_to t(:about_us),page_path('aboutus'),class:'is-active'%></a></li>
+        <li><a target="#" href="#"><%=t(:membership)%></a></li>
+        <li><%=link_to t(:meetings),meetings_path%></a></li>
+        <li><%=link_to t(:news),pages_path%></a></li>
+        </ul>
       </div>
       </div>
     </div>

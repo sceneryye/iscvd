@@ -31,6 +31,8 @@ RailsOnForum::Application.routes.draw do
   resources :account_activations, only: :edit
   resource :search
 
+  resource :meetings, only: [:index,:show]
+
 
   resources :users
 
