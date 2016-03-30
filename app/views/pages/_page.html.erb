@@ -1,3 +1,23 @@
-<li> 
-  <%= raw(page.body) %>
-</li>
+
+
+<div class="callout large primary">
+<div class="row column text-center">
+<h1><%=page.page_category.name if page.page_category_id%></h1>
+<h2 class="subheader"><%=page.title%></h2>
+</div>
+</div>
+ 
+<div class="row medium-8 large-7 columns">
+<div class="blog-post">
+<h3> <small><%=page.updated_at%></small></h3>
+<%=image_tag page.head_pics,:alt=>page.title, class: "thumbnail"%>
+	<p><%= raw(page.body) %></p>
+<div class="callout">
+<ul class="menu simple">
+<li><a href="#">Author: <%=page.author%></a></li>
+<li><a href="#">Comments: 3</a></li>
+</ul>
+</div>
+</div>
+
+</div>
