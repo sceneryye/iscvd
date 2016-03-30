@@ -5,12 +5,12 @@ module Admin
 		# before_action {@forums = Forum.all}
 
 		def index
-			@attendees = MeetingAttend.all
+			@attendees = MeetingAttendee.all
 		
 		end
 
 		def show
-			@attendee = MeetingAttend.find(params[:id])
+			@attendee = MeetingAttendee.find(params[:id])
 		end
 	end
 end
