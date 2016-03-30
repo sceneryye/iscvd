@@ -6,7 +6,6 @@ class CreateMeetings < ActiveRecord::Migration
         t.string :location
         t.datetime :start_time
         t.datetime :end_time
-        t.references :pages,  index: true
 
   	   t.timestamps
     end

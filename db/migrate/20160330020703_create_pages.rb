@@ -9,7 +9,8 @@ class CreatePages < ActiveRecord::Migration
         t.string :from
         t.integer :pageviews
         t.integer :comments_count, default: 0
-        t.references :page_categories,  index: true
+        t.references :page_category,  index: true
+        t.references :meeting,  index: true
         t.string :layout
         t.string :type
         t.string :language
