@@ -25,7 +25,11 @@ $logo-margin: - ($logo-width / 2);
 
 /* Small Navigation */
 .logo-small {
-  float: right;
+   width: $logo-width;
+      left: 50%;
+      right: 50%;
+      top: -6px;
+      margin-left: $logo-margin;
 }
 
 .title-bar {
@@ -44,7 +48,7 @@ $logo-margin: - ($logo-width / 2);
   .logo-wrapper {
     position: relative;
     
-    .language {
+    .locale {
       width: $logo-width;
       height:  92px;
       position: absolute;
