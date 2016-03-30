@@ -16,7 +16,7 @@ RailsOnForum::Application.routes.draw do
     resources :page_categories
     resources :users
     resources :emails
-    resources :sessions, only: [:new]
+    resource :session, only: :create
     resources :donates, only:[:index,:show]
     get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
   end

@@ -23,7 +23,11 @@
       <div class="top-bar-right">
         <ul class="vertical medium-horizontal menu" data-dropdown-menu>
           <li>
+            <%if login?%>
+            <a href="#">Hello, <%=@current_user.full_name%>
+            <%else%>
             <a class="tiny button" data-open="login_register" ><%=t(:sign_in)%></a>
+            <%end%>
           </li>
         </ul>
       </div>
@@ -60,11 +64,15 @@
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
       <ul class="vertical dropdown menu" data-dropdown-menu> 
         <li>
-          <div class="expanded button-group">
-                <a class="tiny button" href="/?locale=zh" >中 &nbsp;文</a>
-                <a class="tiny button" href="/?locale=en" >English</a>   
-          </div>
-        </li>        
+            <%if login?%>
+            <a href="#" class="button expanded">Hello,<%=@current_user.full_name%></a>
+            <%else%>
+            <div class="expanded button-group">
+              <a class="tiny button" data-open="login_register" ><%=t(:login)%></a>
+              <a class="tiny button" data-open="login_register" ><%=t(:join_us)%></a>   
+            </div> 
+            <%end%>          
+        </li>                
         <li><%=link_to t(:home),root_path,class:'button expanded'%></li>
         <li><%=link_to t(:meetings),meetings_path,class:'button expanded'%></li>
         <li><%=link_to t(:news),pages_path,class:'button expanded'%></li>        
@@ -73,9 +81,9 @@
         <li><%=link_to t(:membership),page_path('membership'),class:'button expanded'%></li>
         <li>
           <div class="expanded button-group">
-            <a class="tiny button" data-open="login_register" ><%=t(:login)%></a>
-            <a class="tiny button" data-open="login_register" ><%=t(:join_us)%></a>   
-          </div> 
+                <a class="tiny button" href="/?locale=zh" >中 &nbsp;文</a>
+                <a class="tiny button" href="/?locale=en" >English</a>   
+          </div>
         </li> 
       </ul>
     </div>

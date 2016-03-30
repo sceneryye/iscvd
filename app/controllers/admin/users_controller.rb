@@ -4,7 +4,7 @@ module Admin
 		layout 'admin'
 		def index
 
-			@users = user.all
+			@users = User.all
 		end
 		
 		def show

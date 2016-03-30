@@ -12,6 +12,7 @@ module Admin
 		 end
 
 		def edit
+			@page = Page.find(params[:id])
 		end
 
 		def create

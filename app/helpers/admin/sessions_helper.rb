@@ -2,7 +2,7 @@ module Admin::SessionsHelper
 
 
 	def current_admin
-		@admin ||= Ecstore::Account.find_by_account_id(session[:admin_id])
+		@admin ||= User.find_by_id(session[:admin_id])
 	end
 
 	def current_admin=(admin)
@@ -24,7 +24,7 @@ module Admin::SessionsHelper
 	end
 
 	def after_admin_sign_in_path
-		admin_goods_path
+		admin_pages_path
 	end
 
 	# alias :current_user :current_admin
