@@ -9,7 +9,7 @@
   <div class="row columns">
     <nav class="top-bar" id="nav-menu">
       <div class="logo-wrapper hide-for-small-only">
-           <div class="language button-group">
+           <div class="locale button-group">
                 <a class="tiny button" data-open="login_register" >中 &nbsp;文</a>
                 <a class="tiny button" data-open="login_register" >English</a>   
             </div>
@@ -18,9 +18,9 @@
       <!-- Left Nav Section -->
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
-          <li><a href="#">Contact Us </a></li>
+          <li><%=link_to t(:contac_us),page_path('contactus')%></a></li>
           <li><a href="#">Membership</a></li>
-          <li><a href="#">Donate</a></li></li>
+          <li><%=link_to t(:donate),new_donate_path%></li></li>
         </ul>
       </div>
       

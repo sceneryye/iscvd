@@ -54,7 +54,7 @@ module Admin
 
 
 		def page_params
-			params.require(:page).permit(:title, :language, :body, :head_pics, :slug, :from, :author, :layout, :page_categories_id,:type,:meeting_id)
+			params.require(:page).permit(:title, :locale, :body, :head_pics, :slug, :from, :author, :layout, :page_categories_id,:type,:meeting_id)
 		end
 	end
 end
