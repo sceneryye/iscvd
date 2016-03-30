@@ -10,16 +10,16 @@
     <nav class="top-bar" id="nav-menu">
       <div class="logo-wrapper hide-for-small-only">
            <div class="locale button-group">
-                <a class="tiny button" data-open="login_register" >中 &nbsp;文</a>
-                <a class="tiny button" data-open="login_register" >English</a>   
+                <a class="tiny button" href="/?locale=zh" >中 &nbsp;文</a>
+                <a class="tiny button" href="/?locale=en" >English</a>   
             </div>
       </div>
 
       <!-- Left Nav Section -->
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
-          <li><%=link_to t(:contac_us),page_path('contactus')%></a></li>
-          <li><a href="#">Membership</a></li>
+          <li><%=link_to t(:contact_us),page_path('contactus')%></a></li>
+          <li><a href="#"><%=t(:membership)%></a></li>
           <li><%=link_to t(:donate),new_donate_path%></li></li>
         </ul>
       </div>
@@ -28,7 +28,7 @@
       <div class="top-bar-right">
         <ul class="vertical medium-horizontal menu" data-dropdown-menu>
           <li>
-            <a class="tiny button" data-open="login_register" >Sign In</a>
+            <a class="tiny button" data-open="login_register" ><%=t(:sign_in)%></a>
           </li>
         </ul>
       </div>
@@ -54,8 +54,8 @@
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
       <ul class="vertical dropdown menu" data-dropdown-menu>   
         <li><div class="expanded button-group">
-        <a class="tiny button" data-open="login_register" >Login</a>
-        <a class="tiny button" data-open="login_register" >Join ICVS</a>   
+        <a class="tiny button" data-open="login_register" ><%=t(:login)%></a>
+        <a class="tiny button" data-open="login_register" ><%=t(:join_us)%></a>   
       </div> 
       </li> 
         <li><%=link_to t(:home),root_path%></li>
@@ -76,7 +76,7 @@
       <div  class="columns medium-9 small-12" id="wider">
       <div class='row collapse'  style="margin-bottom:5px; text-align:center;height:2.6em;">
        <div class="columns small-7 large-offset-2"><input type="search" placeholder="Search"></div>
-         <div class="columns small-3"><button class="button">Search</button></div>
+         <div class="columns small-3"><button class="button"><%=t(:search)%></button></div>
        </div>
 
         <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
