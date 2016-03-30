@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
 	# before_action {@forums = Forum.all}
 
 	def index
-
+		@attendees = MeetingAttend.all
 	
 	end
 

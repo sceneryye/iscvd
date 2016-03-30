@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing meeting_attendees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Active Status</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meeting_attendees.each do |meeting_attendee| %>
+      <tr>
+        <td><%= meeting_attendee.email %></td>
+        <td><%= meeting_attendee.activated?.to_s %></td>
+        <td><%= link_to 'Show', meeting_attendee %></td>
+        <td><%= link_to 'Edit', edit_meeting_attendee_path(meeting_attendee) %></td>
+        <td><%= link_to 'Destroy', meeting_attendee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New meeting_attendee', new_meeting_attendee_path %>

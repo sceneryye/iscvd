@@ -10,6 +10,11 @@ RailsOnForum::Application.routes.draw do
     get 'logout' => 'sessions#destroy'
 
     resources :reports
+    resources :meetings
+    resources :meeting_attendees
+    resources :pages
+    resources :page_categories
+    resources :users
     resources :emails
     resources :sessions, only: [:new]
     get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
@@ -33,7 +38,7 @@ RailsOnForum::Application.routes.draw do
 
   resource :home, only: [:index]
 
-  resource :pages, only: [:index,:show]
+  resources :pages, only: [:index,:show]
 
   root 'home#index'
 end

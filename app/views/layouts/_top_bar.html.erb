@@ -58,11 +58,11 @@
         <a class="tiny button" data-open="login_register" >Join ICVS</a>   
       </div> 
       </li> 
-         <li><a href="#"><%=t(:home)%></a></li>
+         <li><%=link_to t(:home),root_path%></li>
         <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
         <li><a target="#" href="#"><%=t(:membership)%></a></li>
         <li><a target="#" href="#"><%=t(:events)%></a></li>
-        <li><a target="#" href="#"><%=t(:contact)%></a></li>
+        <li><%=link_to t(:news),pages_path%></a></li>
       </ul>
     </div>
 
@@ -80,11 +80,11 @@
        </div>
 
           <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
-          <li><a href="#"><%=t(:home)%></a></li>
+          <li><%=link_to t(:home),root_path%></li>
           <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
           <li><a target="#" href="#"><%=t(:membership)%></a></li>
           <li><a target="#" href="#"><%=t(:events)%></a></li>
-          <li><a target="#" href="#"><%=t(:contact)%></a></li>  
+          <li><%=link_to t(:news),pages_path%></a></li>
           </ul>
       </div>
       </div>

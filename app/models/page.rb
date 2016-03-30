@@ -1,13 +1,11 @@
-class Topic < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :forum
+class Page < ActiveRecord::Base
+  belongs_to :meeting
+  belongs_to :page_category
   has_many :comments, dependent: :destroy
-  has_many :votes
 
   validates :title, presence: true
   validates :body,  presence: true, length: {minimum: 2}
-  validates :user,  presence: true
-  validates :forum, presence: true
+  validates :language, presence: true
 
   default_scope {order 'created_at DESC'}
 end

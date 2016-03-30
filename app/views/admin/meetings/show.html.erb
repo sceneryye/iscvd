@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @meeting.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @meeting.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @meeting.password %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @meeting.password_digest %>
+</p>
+
+<p>
+  <strong>Weixin openid:</strong>
+  <%= @meeting.weixin_openid %>
+</p>
+
+<p>
+  <strong>Weixin nickname:</strong>
+  <%= @meeting.weixin_nickname %>
+</p>
+
+<p>
+  <strong>meetingname:</strong>
+  <%= @meeting.meetingname %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @meeting.role %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @meeting.avatar %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @meeting.mobile %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @meeting.sex %>
+</p>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>
