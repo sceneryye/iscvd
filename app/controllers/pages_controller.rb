@@ -6,7 +6,11 @@ class PagesController < ApplicationController
 	end
 
 	def show
-		@page  = Page.find("#{params[:id]}_#{session[:locale]}")
+		id = params[:id]
+		if session[:locale] !='en'
+			id ="#{id}_#{session[:locale]}"
+		end
+		@page  = Page.find(id)
 		render :layout=> @page.layout.present? ? @page.layout : 'application'
 	end
 end
