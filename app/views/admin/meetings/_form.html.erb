@@ -1,6 +1,10 @@
 
-  <div class="col-md-6 col-md-offset-3 sign-form">
-    <%= form_for @meeting, html: {class: 'form-horizontal'} do |f| %>
+<section class="panel">
+    <header class="panel-heading">
+       New Meeting
+    </header>
+    <div class="panel-body">
+       <%= form_for [:admin, @meeting], html: {class: 'form-horizontal'} do |f| %>
         <% if @meeting.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
@@ -14,32 +18,64 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :mobile, '手机', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :mobile, class: 'form-control mobile' %>
+          <%= f.label :title_en, 'title_en', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :title_en, class: 'form-control' %>
           </div>
-        </div>
+        </div> 
+         <div class="form-group">
+          <%= f.label :title_zh, 'title_zh', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :title_zh, class: 'form-control' %>
+          </div>
+        </div> 
+         <div class="form-group">
+          <%= f.label :location_en, 'location_en', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :location_en, class: 'form-control' %>
+          </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :location_zh, 'location_zh', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :location_zh, class: 'form-control' %>
+          </div>
+        </div>        
+        <div class="form-group">
+          <%= f.label :slug, 'slug', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :slug, class: 'form-control' %>
+          </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :start_time, 'start_time', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :start_time, class: 'form-control' %>
+          </div>
 
+        </div> 
         <div class="form-group">
-          <%= f.label :email, '邮箱', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.text_field :email, class: 'form-control' %>
+          <%= f.label :end_time, 'end_time', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :end_time, class: 'form-control' %>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, '密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, '确认密码', class: 'col-md-3 control-label' %>
-          <div class="col-md-9">
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="submit-button col-md-9 col-md-offset-3">
-          <%= f.submit '提交', class: 'btn btn-primary form-control' %>
-        </div>
+        </div> 
+
+      <div class="form-group"> 
+        <div class="submit-button col-md-6">
+          <%= f.submit 'Submit', class: 'btn btn-primary form-control' %>
+        </div> 
+        <div class="submit-button col-md-6">
+          <%= link_to 'Cancle', class: 'btn btn-primary form-control' %>
+        </div> 
+      </div>
     <% end %>
   </div>
+</section>

@@ -9,7 +9,6 @@ class MeetingsController < Admin::BaseController
 
 	def new
 	    @meeting = Meeting.new
-	    render layout: false
 	 end
 
 	def edit
@@ -55,8 +54,7 @@ class MeetingsController < Admin::BaseController
 
 
 	def meeting_params
-		params.require(:meeting).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
-	                             :password_confirmation)
+		params.require(:meeting).permit(:title_en,:title_zh,:location_zh,:location_en,:slug,:end_time,:start_time)
 	end
 end
 end
