@@ -1,7 +1,7 @@
 #encoding:utf-8
 require 'rest-client'
 class UsersController < ApplicationController
-  before_action :select_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       if @user.activated?
         log_in @user
         params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-        redirect_to @user
+        redirect_to user_path(@user, msg: '请去邮箱激活您的账号!')
       else
         message = "Account not activated. "
         message += "Check your email for the activation link."

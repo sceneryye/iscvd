@@ -73,6 +73,8 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -181,6 +183,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    will_paginate (3.1.0)
 
 PLATFORMS
   ruby
@@ -191,6 +194,7 @@ DEPENDENCIES
   coffee-rails
   email_validator
   foundation-rails
+  friendly_id
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
@@ -204,6 +208,7 @@ DEPENDENCIES
   turbolinks
   uglifier
   unicorn
+  will_paginate
 
 BUNDLED WITH
    1.11.2

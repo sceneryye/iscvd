@@ -1,0 +1,1518 @@
+
+
+Started GET "/users" for ::1 at 2016-03-31 17:31:50 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (36.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.5.2) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.5.2) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreatePageCategories (20160330020603)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/killernova/code/iscvd/db/migrate/20160330020603_create_page_categories.rb:8)
+  [1m[35m (46.0ms)[0m  CREATE TABLE `page_categories` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `type` varchar(255), `layout` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=MyISAM DEFAULT CHARSET=utf8
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (26.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160330020603')
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePages (20160330020703)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/killernova/code/iscvd/db/migrate/20160330020703_create_pages.rb:18)
+  [1m[35m (25.6ms)[0m  CREATE TABLE `pages` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `head_pics` varchar(255), `slug` varchar(255) NOT NULL, `author` varchar(255), `from` varchar(255), `pageviews` int(11), `comments_count` int(11) DEFAULT 0, `page_category_id` int(11), `meeting_id` int(11), `layout` varchar(255), `type` varchar(255), `language` varchar(255), `created_at` datetime, `updated_at` datetime,  INDEX `index_pages_on_page_category_id`  (`page_category_id`) ,  INDEX `index_pages_on_meeting_id`  (`meeting_id`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160330020703')
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMeetings (20160330020803)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/killernova/code/iscvd/db/migrate/20160330020803_create_meetings.rb:12)
+  [1m[35m (28.0ms)[0m  CREATE TABLE `meetings` (`id` int(11) auto_increment PRIMARY KEY, `title_en` varchar(255), `location_en` varchar(255), `title_zh` varchar(255), `location_zh` varchar(255), `slug` varchar(255) NOT NULL, `start_time` datetime, `end_time` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=MyISAM DEFAULT CHARSET=utf8
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160330020803')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMeetingAttendees (20160330020903)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/killernova/code/iscvd/db/migrate/20160330020903_create_meeting_attendees.rb:9)
+  [1m[35m (19.6ms)[0m  CREATE TABLE `meeting_attendees` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255), `name` varchar(255), `meetings_id` int(11), `user_id` int(11), `created_at` datetime, `updated_at` datetime,  INDEX `index_meeting_attendees_on_meetings_id`  (`meetings_id`) ,  INDEX `index_meeting_attendees_on_user_id`  (`user_id`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160330020903')
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160330021003)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/killernova/code/iscvd/db/migrate/20160330021003_create_comments.rb:8)
+  [1m[35m (20.5ms)[0m  CREATE TABLE `comments` (`id` int(11) auto_increment PRIMARY KEY, `body` text NOT NULL, `users_id` int(11), `pages_id` int(11), `created_at` datetime, `updated_at` datetime,  INDEX `index_comments_on_users_id`  (`users_id`) ,  INDEX `index_comments_on_pages_id`  (`pages_id`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160330021003')
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'ckeditor_assets'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `ckeditor_assets`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `comments`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'emails'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `emails`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'meeting_attendees'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `meeting_attendees`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'meetings'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `meetings`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'page_categories'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `page_categories`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'pages'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `pages`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'iscvd'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+
+
+Started GET "/users" for ::1 at 2016-03-31 17:32:24 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (7.8ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (40.2ms)
+  Rendered layouts/_sign_up_in.html.erb (0.4ms)
+  Rendered layouts/_top_bar.html.erb (85.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 4309ms (Views: 4273.4ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/assets/foundation_and_overrides.self-701af4823458e23b46d596f51c8d92ae909b1192b9f6053179dc90cf589ac9ee.css?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/emails.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/ckeditor/init.self-2f3e80b764bc18c9362e6f3326e1f32d4a8bdceff67345a3453a93b111626ff3.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/application.self-f8ce9c7dedce1cb292e622bd380a98607e6134b492966b425652c021286ea714.css?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/ckeditor/ckeditor.self-d44511d44b2c01b6466fda92764336001e42a860f53ed63541c0f871afed5d7a.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/_settings.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/emails.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/application.self-3f613b595840b38f8a67a209b5457f592c5618f46646d5c51a276feab94bdaea.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/jquery2.self-0a6570c8f60714fcfb2147cecaf229b5c0ffff626fe407344d3b00a2ad441b7c.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.core.self-de98a54fcab8f5f1162fb0e49a463534368b0a68ce39e90ce8e976abb4671c99.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.abide.self-1e670aa4726c15995d399ad70b3143cc72f72a47cfa48f9c0d7ae18eeefae5d5.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.accordion.self-d81bde3768234088729bf3e753507a4f3eb58b38b2f90ad5839f862d78453a41.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.accordionMenu.self-dfd5db50287057a7925cce1c4ac249247165b40106c43635ea9923040646c1bf.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.drilldown.self-50a5ea2e9b6b02e8c5cec39d81b595fb428886657eaa5adefa6ca0246bca77d4.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.dropdown.self-b9edb543a57c862eba21061f7dd2b89c885dce24a8a675caeb0624b069e5cfc0.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.dropdownMenu.self-5c92959c35f59aaf4fc863189875eb2fdc0167b03968bdd835105fca52d226bb.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.equalizer.self-fedeaad77eadd0e0f46b52a05532b0c66fbc7026378ce2ba5037e1a1e140f612.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.interchange.self-bf36c88763e7fdee85a9ed9904ca5a3c6a041f7dd56b97a450abb0b6e6c4ee03.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.magellan.self-185cddbb3ea900a8b64ad9482999414820039c72b88ac73ce4062e26c2fcb51f.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.offcanvas.self-43878eed51fe559619ff3c62e266b58335e0cd40bc765ede9bb5c61a5e25625d.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.responsiveMenu.self-2f53b31ac38a47da54ad27e3d9f9b0243313fa30b81a2ddd9839b8cbf47e5877.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.orbit.self-049484f44f1b72794c25b19f54015c919aae81a7d83495e5c4aa179ed25a96c3.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.responsiveToggle.self-2b01f8c5e2bfe4eeaf7b15dd94962ef957112c455f4dc3abcf5e41e4c98b5b91.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.slider.self-d5475aae2f1110b283866d07e4a6805ea4af07a60c57523b9b865e7bc1e40ae1.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.reveal.self-1d9aa915ea291686bcba2cece2d332c698426bba336be901caf67378e84d844a.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.sticky.self-8e0aa578f0015adbf99c14d1bb8464da751951e2c6e2923c2395ceba99c28bac.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.tabs.self-891f2cfe78a15ab6d129ae1bdcd83bb8c344b5677446700c8329442081eddddf.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.toggler.self-4494df679f84ef27409dbd4eb8d241adc1cb8d945ff99144bf53ee1a769a44be.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.tooltip.self-4cf167bdbe826668ee0d73e6e30da8aaba252c73084db7b005923d5cd102d11e.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.box.self-aff154f992ce4c4cc7032e08bdba9b45749cfc87bddf128ba924da96a6c54ba8.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.keyboard.self-cf209dc0383f29cb576393bbdee52dbbd819837d6430a35afb4a4703770972f9.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.mediaQuery.self-53d64030e881f2123c4c8e75e57593be7a3fb0b3d228cdd9700a644315d43f0d.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.motion.self-13d4248460aba53c0fd52e1ec0d5cb41c317b1c4d974bc5d905c9976dc9ef218.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.nest.self-c9876586f80b068aea0d01390583424a28fa305c450e12a49bb301dcc686d1a0.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.timerAndImageLoader.self-68c67c1b0b4f2e2cb7f2af57124f38f54b749efed9f1bebc44677dc27abf7864.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.touch.self-e26387c8ba249a8e90745647603562023cd1932c720ddf72407dc7a489ecb893.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.util.triggers.self-71a2360cfe56c89eb46e0776c3d04601a8cce01d9e1098b808375eecc4b2418c.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/foundation.self-5ecf2f4d83e6260dabd6ec48e76d8ddebccf956563f34072221bf960d3b8c255.js?body=1" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 17:32:29 +0800
+
+
+Started GET "/img/favicon.png" for ::1 at 2016-03-31 17:51:37 +0800
+
+ActionController::RoutingError (No route matches [GET] "/img/favicon.png"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (19.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (169.8ms)
+
+
+Started GET "/index.html" for ::1 at 2016-03-31 17:51:45 +0800
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (87.6ms)
+
+
+Started GET "/admin/img/favicon.png" for ::1 at 2016-03-31 17:52:30 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/img/favicon.png"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (83.3ms)
+
+
+Started GET "/admin/pages" for ::1 at 2016-03-31 17:53:22 +0800
+Processing by Admin::PagesController#index as HTML
+  [1m[36mPage Load (0.8ms)[0m  [1mSELECT `pages`.* FROM `pages`  ORDER BY created_at DESC[0m
+  Rendered admin/pages/index.html.erb within layouts/admin (24.4ms)
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 20.6ms)
+
+ActionView::Template::Error (undefined local variable or method `admin_send_group_emails' for #<#<Class:0x007fa707b39650>:0x007fa707b293b8>
+Did you mean?  admin_send_group_emails_url
+               admin_send_group_emails_path):
+    350:                         <%end%>
+    351:                   </li>
+    352:                    <li>
+    353:                         <%=link_to admin_send_group_emails do%>
+    354:                           <i class="icon-envelope-l"></i>
+    355:                           <span>Emails</span>
+    356:                         <%end%>
+  app/helpers/admin/base_helper.rb:9:in `method_missing'
+  app/views/layouts/admin.html.erb:353:in `_app_views_layouts_admin_html_erb___2700204279205716268_70177682690820'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (53.7ms)
+
+
+Started GET "/admin/pages" for ::1 at 2016-03-31 17:53:55 +0800
+Processing by Admin::PagesController#index as HTML
+  [1m[35mPage Load (0.2ms)[0m  SELECT `pages`.* FROM `pages`  ORDER BY created_at DESC
+  Rendered admin/pages/index.html.erb within layouts/admin (0.9ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/assets/jquery-knob//admin/js/jquery.knob.js" for ::1 at 2016-03-31 17:53:55 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/assets/jquery-knob/admin/js/jquery.knob.js"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (85.7ms)
+
+
+Started GET "/admin//admin/img/avatar-mini.jpg" for ::1 at 2016-03-31 17:53:55 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/admin/img/avatar-mini.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (94.3ms)
+
+
+Started GET "/admin//admin/img/avatar-mini2.jpg" for ::1 at 2016-03-31 17:53:56 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/admin/img/avatar-mini2.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (11.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (94.6ms)
+
+
+Started GET "/admin//admin/img/avatar-mini4.jpg" for ::1 at 2016-03-31 17:53:56 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/admin/img/avatar-mini4.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (82.8ms)
+
+
+Started GET "/admin//admin/img/avatar-mini3.jpg" for ::1 at 2016-03-31 17:53:56 +0800
+
+ActionController::RoutingError (No route matches [GET] "/admin/admin/img/avatar-mini3.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (108.1ms)
+
+
+Started GET "/admin/send_group_emails" for ::1 at 2016-03-31 17:53:58 +0800
+Processing by Admin::ReportsController#send_group_emails as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `emails`[0m
+7
+  [1m[35mEmail Load (0.4ms)[0m  SELECT `emails`.* FROM `emails`  ORDER BY `emails`.`created_at` DESC
+  Rendered admin/reports/send_group_emails.html.erb within layouts/admin1 (20.0ms)
+Completed 200 OK in 194ms (Views: 155.3ms | ActiveRecord: 33.9ms)
+
+
+Started GET "/stylesheets/admin/reports.css" for ::1 at 2016-03-31 17:53:58 +0800
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/admin/reports.css"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (89.5ms)
+
+
+Started GET "/" for ::1 at 2016-03-31 17:57:16 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (82.4ms)
+  Rendered layouts/_sign_up_in.html.erb (0.4ms)
+  Rendered layouts/_top_bar.html.erb (4.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1526ms (Views: 1516.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 17:57:18 +0800
+
+
+Started GET "/images/meeting_picture01.jpg" for ::1 at 2016-03-31 17:57:18 +0800
+
+ActionController::RoutingError (No route matches [GET] "/images/meeting_picture01.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (143.8ms)
+
+
+Started GET "/images/meeting_picture02.jpg" for ::1 at 2016-03-31 17:57:18 +0800
+
+ActionController::RoutingError (No route matches [GET] "/images/meeting_picture02.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (128.3ms)
+
+
+Started GET "/images/meeting_picture04.jpg" for ::1 at 2016-03-31 17:57:19 +0800
+
+ActionController::RoutingError (No route matches [GET] "/images/meeting_picture04.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (154.1ms)
+
+
+Started GET "/images/meeting_picture03.jpg" for ::1 at 2016-03-31 17:57:19 +0800
+
+ActionController::RoutingError (No route matches [GET] "/images/meeting_picture03.jpg"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (99.7ms)
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 17:57:19 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 17:57:19 +0800
+
+
+Started GET "/index.html" for ::1 at 2016-03-31 17:59:46 +0800
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (94.6ms)
+
+
+Started GET "/index.html" for ::1 at 2016-03-31 18:00:53 +0800
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (90.8ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:01:25 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.7ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:02:33 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.4ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.4ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:06:20 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.9ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:09:25 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.7ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:09:30 +0800
+Processing by SessionsController#create as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.8ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:09:38 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"asdasd", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (3.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` IS NULL LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (20.0ms)
+  Rendered layouts/_sign_up_in.html.erb (0.7ms)
+  Rendered layouts/_top_bar.html.erb (67.0ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 1455ms (Views: 1422.4ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 18:09:39 +0800
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 18:09:40 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 18:09:40 +0800
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:26:52 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (5.9ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (22.4ms)
+  Rendered layouts/_sign_up_in.html.erb (0.5ms)
+  Rendered layouts/_top_bar.html.erb (61.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1576ms (Views: 1439.2ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 18:26:54 +0800
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 18:26:54 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 18:26:54 +0800
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:28:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (5.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (23.0ms)
+  Rendered layouts/_sign_up_in.html.erb (0.7ms)
+  Rendered layouts/_top_bar.html.erb (70.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1627ms (Views: 1489.8ms | ActiveRecord: 26.1ms)
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 18:28:48 +0800
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 18:28:48 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 18:28:48 +0800
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:34:39 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "passowrd"=>"111111"}}
+  [1m[35mUser Load (6.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (25.0ms)
+  Rendered layouts/_sign_up_in.html.erb (0.4ms)
+  Rendered layouts/_top_bar.html.erb (77.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1551ms (Views: 1417.6ms | ActiveRecord: 25.9ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:34:46 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "passowrd"=>"123456"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (8.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 178ms (Views: 109.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:39:24 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "passowrd"=>"111111"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (9.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 254ms (Views: 187.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:39:29 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "passowrd"=>"123456"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (7.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 183ms (Views: 117.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:40:56 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "passowrd"=>"111111"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (26.0ms)
+  Rendered layouts/_sign_up_in.html.erb (0.4ms)
+  Rendered layouts/_top_bar.html.erb (78.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1579ms (Views: 1449.1ms | ActiveRecord: 20.0ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:42:49 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (24.8ms)
+  Rendered layouts/_sign_up_in.html.erb (0.8ms)
+  Rendered layouts/_top_bar.html.erb (93.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1537ms (Views: 1409.3ms | ActiveRecord: 19.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:42:56 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 69ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:42:56 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `select_user' for #<UsersController:0x007f9589809938>):
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.5.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.5.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.5.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.5.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.5.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.5.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.5.2) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.5.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.5.2) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.5.2) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5.2) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5.2) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5.2) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.5.2) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.5.2) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5.2) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5.2) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5.2) lib/action_dispatch/routing/route_set.rb:815:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5.2) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.2) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.2) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/killernova/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/killernova/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (52.7ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:44:19 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 104ms (ActiveRecord: 20.1ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:44:19 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (9.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 214ms (Views: 212.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:44:28 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 70ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:44:28 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (8.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 134ms (Views: 133.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:44:35 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (8.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 195ms (Views: 121.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:44:48 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/2
+Completed 302 Found in 67ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2" for ::1 at 2016-03-31 18:44:48 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (9.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 140ms (Views: 138.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:44:52 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (8.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 182ms (Views: 115.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:46:02 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (9.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 244ms (Views: 177.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:46:09 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 69ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:46:09 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (8.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 124ms (Views: 122.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:46:18 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 67ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:46:18 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (8.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 117ms (Views: 115.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:47:46 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 72ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:47:46 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (10.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 179ms (Views: 178.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:47:51 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (8.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 193ms (Views: 123.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:48:11 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3001/users/2
+Completed 302 Found in 72ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2" for ::1 at 2016-03-31 18:48:11 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (9.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 133ms (Views: 132.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:49:52 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (27.8ms)
+  Rendered layouts/_sign_up_in.html.erb (0.4ms)
+  Rendered layouts/_top_bar.html.erb (61.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1562ms (Views: 1435.2ms | ActiveRecord: 20.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:50:00 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 71ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:50:00 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (7.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 105ms (Views: 103.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:50:15 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"session"=>{"from"=>"ajax", "email"=>"starcraft_p@163.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'starcraft_p@163.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/users/2
+Completed 302 Found in 72ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2" for ::1 at 2016-03-31 18:50:15 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (9.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 194ms (Views: 192.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:52:14 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as */*
+  Parameters: {"from"=>"ajax", "session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+-------------login ok
+Redirected to http://localhost:3001/users/1
+Completed 302 Found in 130ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:52:14 +0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_sign_up_in.html.erb (0.5ms)
+  Rendered layouts/_top_bar.html.erb (90.3ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1488ms (Views: 1485.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:52:22 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"from"=>"ajax", "session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (19.1ms)
+  Rendered layouts/_sign_up_in.html.erb (0.0ms)
+  Rendered layouts/_top_bar.html.erb (7.8ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 205ms (Views: 134.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:54:08 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"from"=>"ajax", "session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_sign_up_in.html.erb (0.1ms)
+  Rendered layouts/_top_bar.html.erb (9.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 237ms (Views: 126.8ms | ActiveRecord: 19.6ms)
+
+
+Started POST "/session" for ::1 at 2016-03-31 18:54:17 +0800
+Processing by SessionsController#create as */*
+  Parameters: {"from"=>"ajax", "session"=>{"email"=>"enternicky@126.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'enternicky@126.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+-------------login ok
+Completed 200 OK in 69ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-03-31 18:54:17 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_sign_up_in.html.erb (0.5ms)
+  Rendered layouts/_top_bar.html.erb (5.2ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 115ms (Views: 113.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/logo_with_title.png" for ::1 at 2016-03-31 18:54:17 +0800
+
+
+Started GET "/assets/bg_blue.jpg" for ::1 at 2016-03-31 18:54:18 +0800
+
+
+Started GET "/assets/fourway.jpg" for ::1 at 2016-03-31 18:54:18 +0800
