@@ -1,6 +1,6 @@
 class Admin::EmailsController < ApplicationController
-  layout 'admin1'
-  before_action :set_email, only: [:show, :edit, :destroy]
+  layout 'admin'
+  before_action :set_email, only: [:show, :edit, :destroy, :update]
 
   def new
     @email = Email.new
@@ -19,9 +19,22 @@ class Admin::EmailsController < ApplicationController
   end
 
   def update
+    if @email.update_attributes(email_params)
+      redirect_to @email
+    else
+      render 'edit'
+    end
   end
 
+
   def destroy
+    @email.destroy
+    redirect_to admin_emails_path
+  end
+
+  def index
+    @emails = Email.all
+    @email_addresses = User.all.pluck(:email)
   end
 
   private
@@ -33,4 +46,5 @@ class Admin::EmailsController < ApplicationController
   def set_email
     @email = Email.find_by(id: params[:id])
   end
+
 end
