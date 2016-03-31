@@ -75,6 +75,8 @@ pickle-email-*.html
 *.log
 *.xml
 /.idea/*
+/tmp/*
+*.yml
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -98,5 +100,6 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-.idea/
+.idea/*
+
 
