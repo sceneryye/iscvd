@@ -25,21 +25,26 @@
           </div>
         </div> 
         <div class="form-group">
-          <%= f.label :page_category_id, 'page_category_id', class: 'col-md-2 control-label' %>
+          <%= f.label :page_category_id, 'category of Page', class: 'col-md-2 control-label' %>
          
           <div class="col-md-10">
-            <%= f.text_field :page_category_id, class: 'form-control' %>
+             <%=f.select :page_category_id, @categories.collect {|c| [c.name, c.id]},{:include_blank=>"Please select"} ,{class:"form-control m-bot15"}%>
           </div>
         </div>     
-        <div class="form-group">
-          <%= f.label :locale, 'locale', class: 'col-md-2 control-label' %>
+        <div class="form-group">          
+          <%= f.label :locale, 'language', class: 'col-md-2 control-label' %>
          
           <div class="col-md-10">
-            <%= f.text_field :locale, class: 'form-control' %>
+            <label class="label_radio" for="radio-01">
+              <%= f.radio_button :locale,'zh'%>Chinse
+            </label>&nbsp;|&nbsp;
+            <label class="label_radio" for="radio-01">
+              <%= f.radio_button :locale,'en'%>English
+            </label>
           </div>
         </div>  
         <div class="form-group">
-          <%= f.label :slug, 'slug', class: 'col-md-2 control-label' %>
+          <%= f.label :slug, 'friendly url', class: 'col-md-2 control-label' %>
          
           <div class="col-md-10">
             <%= f.text_field :slug, class: 'form-control' %>

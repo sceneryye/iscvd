@@ -2,8 +2,10 @@
 module Admin
 	class PageCategoriesController < Admin::BaseController
 		layout 'admin'
-		def index
 
+		before_action :set_page_category, only: [:edit, :update, :destroy]
+
+		def index
 			@page_categories = PageCategory.all
 		end
 
@@ -11,8 +13,7 @@ module Admin
 		    @page_category = PageCategory.new
 		 end
 
-		def edit
-		end
+		def edit() end
 
 		def create
 			@page_category = PageCategory.new(page_category_params)
@@ -23,10 +24,9 @@ module Admin
 			end
 		end
 
-
 		def update
 			respond_to do |format|
-			  if @page_category.update(Page_category_params)
+			  if @page_category.update(page_category_params)
 			    format.html { redirect_to @page_category, notice: 'Page_category was successfully updated.' }
 			    format.json { render :show, status: :ok, location: @page_category }
 			  else
@@ -35,7 +35,6 @@ module Admin
 			  end
 			end
 		end
-
 
 		def destroy
 			@page_category.destroy
@@ -49,12 +48,12 @@ module Admin
 
 		# Use callbacks to share common setup or constraints between actions.
 		def set_page_category
-			@page_category = Page_category.find(params[:id])
+			@page_category = PageCategory.find(params[:id])
 		end
 
 
 		def page_category_params
-			params.require(:page_category).permit(:name)
+			params.require(:page_category).permit(:name,:layout,:type)
 		end
 	end
 end

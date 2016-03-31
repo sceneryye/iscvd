@@ -13,7 +13,7 @@ RailsOnForum::Application.routes.draw do
     resources :meetings
     resources :meeting_attendees, only:[:index,:show]
     resources :pages
-    resources :page_categories
+    resources :page_categories, only: [:index,:new,:create,:edit,:update,:destory]
     resources :users
     resources :emails
     resource :session, only: :create

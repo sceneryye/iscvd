@@ -1,9 +1,12 @@
 #encoding:utf-8
 module Admin
 	class PagesController < Admin::BaseController
-		layout 'admin'
-		def index
+		before_action :get_categories, only: [:new, :edit]
+		before_action :set_page, only: [:edit, :update, :destroy]
 
+		layout 'admin'
+
+		def index
 			@pages = Page.all
 		end
 		
@@ -11,9 +14,7 @@ module Admin
 		    @page = Page.new
 		 end
 
-		def edit
-			@page = Page.find(params[:id])
-		end
+		def edit() end
 
 		def create
 			@page = Page.new(page_params)
@@ -27,7 +28,7 @@ module Admin
 
 		def update
 			respond_to do |format|
-			  if @page.update(Page_params)
+			  if @page.update(page_params)
 			    format.html { redirect_to @page, notice: 'Page was successfully updated.' }
 			    format.json { render :show, status: :ok, location: @page }
 			  else
@@ -53,9 +54,13 @@ module Admin
 			@page = Page.find(params[:id])
 		end
 
+		def get_categories
+			@categories = PageCategory.all
+		end
+
 
 		def page_params
-			params.require(:page).permit(:title, :locale, :body, :head_pics, :slug, :from, :author, :layout, :page_categories_id,:type,:meeting_id)
+			params.require(:page).permit(:title, :locale, :body, :head_pics, :slug, :from, :author, :layout, :page_category_id,:type,:meeting_id)
 		end
 	end
 end

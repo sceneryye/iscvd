@@ -1,6 +1,7 @@
 #encoding:utf-8
 module Admin
 class MeetingsController < Admin::BaseController
+	
 	layout 'admin'
 	def index
 
