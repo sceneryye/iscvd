@@ -2,11 +2,11 @@
 
 <h1>Listing meeting_attendees</h1>
 
-<table>
+ <table class="table table-striped table-advance table-hover">
   <thead>
     <tr>
       <th>Email</th>
-      <th>Active Status</th>
+      <th>Full Name</th>
 
       <th colspan="3"></th>
     </tr>
@@ -16,15 +16,11 @@
     <% @meeting_attendees.each do |meeting_attendee| %>
       <tr>
         <td><%= meeting_attendee.email %></td>
-        <td><%= meeting_attendee.activated?.to_s %></td>
+        <td><%= meeting_attendee.user.full_name if meeting_attendee.user_id %></td>
         <td><%= link_to 'Show', meeting_attendee %></td>
-        <td><%= link_to 'Edit', edit_meeting_attendee_path(meeting_attendee) %></td>
-        <td><%= link_to 'Destroy', meeting_attendee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end if @meeting_attendess%>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New meeting_attendee', new_meeting_attendee_path %>

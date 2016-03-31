@@ -4,15 +4,15 @@
        <th><i class="icon_profile"></i>Title</th>
        <th><i class="icon_profile"></i>Category</th>
        <th><i class="icon_profile"></i>Language</th>       
-       <th><i class="fa fa-comments">Meeting</th>
-       <th><i class="icon_clock_alt"></i>Created_At</th>
-       <th><i class="icon_clock_alt"></i> Updated_At</th>
+       <th><i class="icon_profile"></i>Meeting</th>
+       <th><i class="icon_calendar"></i> Created_At</th>
+       <th><i class="icon_calendar"></i> Updated_At</th>
     </tr>
     <% @pages.each do |page| %>
       <tr>
         <td><%= page.title%></td>
         <td><%= page.page_category.name if page.page_category_id%></td>
-        <td><%= page.locale %></td>
+        <td><%= page.language %></td>
         <td><%= page.meeting.name if page.meeting_id%></td>
         <td><%=page.created_at%></td>
         <td><%=page.updated_at%></td>

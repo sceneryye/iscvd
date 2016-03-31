@@ -16,27 +16,48 @@
 
 /* Variables */
 
-// Adjust width accordingly (use even #'s)
-$logo-width: 200px;
-// Reduce px value to increase space between logo and menu text
-$logo-padding: $logo-width - 32px; 
-// Leave alone
-$logo-margin: - ($logo-width / 2);
+
 
 /* Small Navigation */
+$logo-width: 100px;
+$logo-padding: $logo-width - 32px; 
+$logo-margin: - ($logo-width / 2);
 .logo-small {
-  float: right;
+  width: $logo-width;
+  left: 40%;
+  right: 30%;
+  margin-left: $logo-margin;
 }
+.title-bar i{font-size:2em;margin:.5rem}
+// Right part
+  .title-bar-right {
+    width: 30%;
+    padding-left: $logo-padding;
+  }
+  
+  // Left part
+  .title-bar-left {
+    width:  40%;
+    padding-right: $logo-padding;
+  }
 
-.title-bar {
-  padding: 0 .5rem;
-}
+// Adjust width accordingly (use even #'s)
+$locale-width: 200px;
+// Reduce px value to increase space between logo and menu text
+$locale-padding: $locale-width - 32px; 
+// Leave alone
+$locale-margin: - ($locale-width / 2);
 
-.menu-icon,
-.title-bar-title {
-  position: relative;
-  top: 10px;
-}
+
+// .title-bar {
+//   padding: 0 .5rem;
+// }
+
+// .menu-icon,
+// .title-bar-title {
+//   position: relative;
+//   top: 10px;
+// }
 
 /* Medium-Up Navigation */
 @media only screen and (min-width: 40rem) { 
@@ -44,21 +65,21 @@ $logo-margin: - ($logo-width / 2);
   .logo-wrapper {
     position: relative;
     
-    .language {
-      width: $logo-width;
+    .locale {
+      width: $locale-width;
       height:  92px;
       position: absolute;
       left: 50%;
       right: 50%;
       top: -6px;
-      margin-left: $logo-margin;
+      margin-left: $locale-margin;
     }
   }
 
   // Right part
   .top-bar-right {
     width: 50%;
-    padding-left: $logo-padding;
+    padding-left: $locale-padding;
     
     ul {
       float: left;
@@ -68,7 +89,7 @@ $logo-margin: - ($logo-width / 2);
   // Left part
   .top-bar-left {
     width:  50%;
-    padding-right: $logo-padding;
+    padding-right: $locale-padding;
     
     ul {
       float: right;
@@ -135,18 +156,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /*General*/
 
-.intro {
-    background: url(../img/fourway.jpg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 700px;
-    color: #fff;
-    padding: 30px;
-    text-align: center;
-    background-position: bottom center;
-}
 
 /* About */
 .about {

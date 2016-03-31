@@ -35,6 +35,19 @@ class User < ActiveRecord::Base
     self.activated == true
   end
 
+  def self.admin_authenticate(email,password)
+    use = self.where(:email=>email,:role=>'0').first
+    if use
+      if use.password_digest[0] == "s"
+        encrypt = "s" + Digest::MD5.hexdigest("#{Digest::MD5.hexdigest(password)}#{name}#{use.createtime}")[0..30]
+        return use if encrypt == use.password_digest
+      else
+        return use if Digest::MD5.hexdigest(password) == use.password_digest
+      end
+    end
+    nil
+  end
+
   private
 
   def create_activation_digest

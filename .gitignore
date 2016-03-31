@@ -45,11 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-
-/public/avatars
-/public/events
-/public/groupbuys
-/public/comments
+.idea
 /config/database.yml
 *.[.DS_Store]
 *.rbc

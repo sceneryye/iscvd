@@ -1,35 +1,32 @@
-<!-- Small Navigation -->
-<div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
-  <a class="logo-small show-for-small-only" href="#"><img src="http://placehold.it/50x50?text=LOGO" /></a>
-  <button class="menu-icon" type="button" data-toggle><i class='fa fa-bars'></i></button>
-</div>
 
 <!-- Medium-Up Navigation -->
-<div  style="background: #e6e6e6;">
+<div  style="background: #e6e6e6;" class="hide-for-small-only">
   <div class="row columns">
     <nav class="top-bar" id="nav-menu">
       <div class="logo-wrapper hide-for-small-only">
-           <div class="language button-group">
-                <a class="tiny button" data-open="login_register" >中 &nbsp;文</a>
-                <a class="tiny button" data-open="login_register" >English</a>   
+           <div class="locale button-group">
+                <a class="tiny button" href="/?locale=zh" >中 &nbsp;文</a>
+                <a class="tiny button" href="/?locale=en" >English</a>   
             </div>
       </div>
 
       <!-- Left Nav Section -->
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
-          <li><a href="#">Contact Us </a></li>
-          <li><a href="#">Membership</a></li>
-          <li><a href="#">Donate</a></li></li>
+          <li><%=link_to t(:contact_us),page_path('contactus')%></a></li>
+          <li><%=link_to t(:donate),new_donate_path%></li></li>
         </ul>
       </div>
       
       <!-- Right Nav Section -->
       <div class="top-bar-right">
         <ul class="vertical medium-horizontal menu" data-dropdown-menu>
-          <li>
-            <a class="tiny button" data-open="login_register" >Sign In</a>
-          </li>
+        <%if login?%>
+          <li><a href="#">Hello, <%=@current_user.full_name%></a>
+          <li><%=link_to t(:logout),logout_path, method: :delete%></li>
+        <%else%>
+          <li><a class="tiny button" data-open="login_register" ><%=t(:member_sign_in)%></a></li>
+        <%end%>
         </ul>
       </div>
     </nav>
@@ -39,60 +36,82 @@
 
   <!-- off-canvas title bar for 'small' screen -->
     <div class="title-bar" data-responsive-toggle="top_nav1" data-hide-for="medium">
+      <a  href="/">
+        <img src='/assets/logo_with_title_s.png' alt='International Society for Cardiavascular Diseases'>
+      </a> 
       <div class="title-bar-left">
-        <button class="menu-icon" type="button" data-open="offCanvasLeft"><i class='fa fa-bars'></i></button>
+        <button class="menu-icon" type="button" data-open="offCanvasLeft">
+          <i class='fa fa-bars'></i>
+        </button>
         <span class="title-bar-title">
-          ISCVD
+        <!--
+           <a class="logo-small " href="/">
+            <img src='/assets/logo_with_title.png' alt='International Society for Cardiavascular Diseases'>
+          </a> 
+        -->
         </span>
       </div>
-       <div class="title-bar-right" data-responsive-toggle="wider" data-hide-for="medium">
-        <button class="menu-icon" type="button" data-toggle><i class='fa fa-search'></i></button>
+      <div class="title-bar-right" data-responsive-toggle="wider" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle>
+          <i class='fa fa-search'></i>
+        </button>
       </div>
     </div>
 
     <!-- off-canvas left menu -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-      <ul class="vertical dropdown menu" data-dropdown-menu>   
-        <li><div class="expanded button-group">
-        <a class="tiny button" data-open="login_register" >Login</a>
-        <a class="tiny button" data-open="login_register" >Join ICVS</a>   
-      </div> 
-      </li> 
-         <li><%=link_to t(:home),root_path%></li>
-        <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
-        <li><a target="#" href="#"><%=t(:membership)%></a></li>
-        <li><a target="#" href="#"><%=t(:events)%></a></li>
-        <li><%=link_to t(:news),pages_path%></a></li>
+      <ul class="vertical dropdown menu" data-dropdown-menu> 
+        <%if login?%>
+          <li><a href="#" class="button expanded">Hello,<%=@current_user.full_name%></a><li>
+          <li><%=link_to t(:logout),logout_path, method: :delete%></li>
+        <%else%>
+          <li>
+            <div class="expanded button-group">
+              <a class="tiny button" data-open="login_register" ><%=t(:login)%></a>
+              <a class="tiny button" data-open="login_register" ><%=t(:join_us)%></a>   
+            </div>
+          </li>
+        <%end%>    
+        <li><%=link_to t(:home),root_path,class:'button expanded'%></li>
+        <li><%=link_to t(:meetings),meetings_path,class:'button expanded'%></li>
+        <li><%=link_to t(:news),pages_path,class:'button expanded'%></li>        
+        <li><%=link_to t(:donate),new_donate_path,class:'button expanded'%></li>
+        <li><%=link_to t(:about_us),page_path('aboutus'),class:'button expanded'%></li>
+        <li>
+          <div class="expanded button-group">
+                <a class="tiny button" href="/?locale=zh" >中 &nbsp;文</a>
+                <a class="tiny button" href="/?locale=en" >English</a>   
+          </div>
+        </li> 
       </ul>
     </div>
 
     <!-- right menu -->
 
     <!-- "wider" top-bar menu for 'medium' and up -->
-     <div  class="row collapse">
-      <div  class="columns medium-3 small-12">
+    <div class="row">
+      <div  class="columns medium-3 small-12 hide-for-small-only">
           <img src='/assets/logo_with_title.png' alt='International Society for Cardiavascular Diseases'>
       </div>
-      <div  class="columns medium-9 small-12" id="wider">
-      <div class='row collapse'  style="margin-bottom:5px; text-align:center;height:2.6em;">
-       <div class="columns small-7 large-offset-2"><input type="search" placeholder="Search"></div>
-         <div class="columns small-3"><button class="button">Search</button></div>
-       </div>
-
-          <ul class="menu align-right align-bottom"  style=";margin-bottom:5px;">         
+      <div class="columns medium-9 small-12 align-right" id="wider">
+        <ul class="menu align-right align-bottom"   style="margin-top:5px;">         
+            <li><input type="search" placeholder="Search"></li>
+            <li>
+              <span class="postfix"><a class="button expended"><%=t(:search)%></a></span>
+            </li>
+        </ul>
+        <ul class="menu align-right align-bottom"  style="margin-top:5px;">         
           <li><%=link_to t(:home),root_path%></li>
-          <li><a href="#" class="is-active"><%=t(:about_us)%></a></li>
-          <li><a target="#" href="#"><%=t(:membership)%></a></li>
-          <li><a target="#" href="#"><%=t(:events)%></a></li>
+          <li><%=link_to t(:about_us),page_path('aboutus'),class:'is-active'%></a></li>
+          <li><%=link_to t(:meetings),meetings_path%></a></li>
           <li><%=link_to t(:news),pages_path%></a></li>
-          </ul>
-      </div>
+        </ul>
       </div>
     </div>
     
 
-<%=render '/layouts/sign_up_in.html.erb'%>
+   
 
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    
 
   

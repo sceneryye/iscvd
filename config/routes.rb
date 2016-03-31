@@ -2,8 +2,6 @@ RailsOnForum::Application.routes.draw do
 
   get 'admin' => 'admin/sessions#new'
 
-
-#match '/static-events/',     :to => 'static_events#index', :as => :static_events
   namespace :admin do
 
     # subdomain = nil
@@ -13,12 +11,13 @@ RailsOnForum::Application.routes.draw do
 
     resources :reports
     resources :meetings
-    resources :meeting_attendees
+    resources :meeting_attendees, only:[:index,:show]
     resources :pages
-    resources :page_categories
+    resources :page_categories, only: [:index,:new,:create,:edit,:update,:destory]
     resources :users
     resources :emails
-    resources :sessions, only: [:new]
+    resource :session, only: :create
+    resources :donates, only:[:index,:show]
     get 'send_group_emails', to: 'reports#send_group_emails', as: :send_group_emails
   end
 
@@ -28,18 +27,17 @@ RailsOnForum::Application.routes.draw do
   get '/login', to: 'sessions#new', as: :login
   delete '/logout', to: 'sessions#destroy', as: :logout
   resource :session, only: :create
+
   resources :account_activations, only: :edit
   resource :search
 
-
   resources :users
-
-
   get '/register', to: 'users#new', as: :register
 
 
   resource :home, only: [:index]
-
+  resources :donates, only:[:index,:show,:new,:create]
+  resources :meetings, only: [:index,:show]
   resources :pages, only: [:index,:show]
 
   root 'home#index'

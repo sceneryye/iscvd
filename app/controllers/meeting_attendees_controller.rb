@@ -1,5 +1,5 @@
 #encoding:utf-8
-class DocumentsController < ApplicationController
+class MeetingAttendeesController < ApplicationController
 	# before_action {@forums = Forum.all}
 
 	def new

@@ -13,7 +13,7 @@ class CreatePages < ActiveRecord::Migration
         t.references :meeting,  index: true
         t.string :layout
         t.string :type
-        t.string :language
+        t.string :locale
 
   	   t.timestamps
     end

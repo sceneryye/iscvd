@@ -1,13 +1,15 @@
 #encoding:utf-8
-class Admin::UsersController < ApplicationController
-	layout 'admin'
+module Admin
+	class UsersController < Admin::BaseController
+		layout 'admin'
+		def index
 
-	def index
-
-	
-	end
-
-	def show
+			@users = User.all
+		end
+		
+		def show
+		    @user = User.find(params[:id])
+		 end
 		
 	end
 end

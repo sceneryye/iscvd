@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    render layout: false
   end
 
   def edit
@@ -65,7 +64,7 @@ class UsersController < ApplicationController
     phone = params[:mobile]
     return render text: 'mobile number is empty' if phone.empty?
     post_url = 'http://222.73.117.158:80/msg/HttpBatchSendSM'
-    code = "尊敬的用户，您注册上海营养中心的密码为#{rand(100000).to_s.ljust(6, '0')}, 请妥善保管，感谢您的注册！"
+    code = "尊敬的用户，您注册的密码为#{rand(100000).to_s.ljust(6, '0')}, 请妥善保管，感谢您的注册！"
     var = {code: code}.to_json
     post_hash = {account: 'jiekou-clcs-10', pswd: 'Tch788788', mobile: phone, msg: code, needstatus: true}
     res_code_json = RestClient.get post_url, {params: post_hash}
@@ -94,7 +93,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
+    params.require(:user).permit(:name, :email, :password, :password_digest, :full_name, :role, :avatar, :mobile, :sex,
                                  :password_confirmation)
   end
 end

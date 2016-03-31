@@ -14,21 +14,22 @@
   <body>
     <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-    <%=render '/layouts/top_bar'%>  
+      <%=render '/layouts/top_bar'%>  
 
-    <!-- original content goes in this container -->
-    <div class="off-canvas-content" data-off-canvas-content style="background:url(/assets/bg_blue.jpg) repeat">
-    
-      <%= yield %>
+      <!-- original content goes in this container -->
+      <div class="off-canvas-content" data-off-canvas-content>    
+        <%= yield %>
+      </div>
+
+      <%=render '/layouts/footer'%>
+
+      <!-- close wrapper, no more content after this -->
     </div>
+  </div>        
 
-    <!-- close wrapper, no more content after this -->
-  </div>
-</div>      
-<%=render '/layouts/footer'%>
-
-
-<link rel="stylesheet" media="screen" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%=render '/layouts/sign_up_in.html.erb'%>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <link rel="stylesheet" media="screen" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   </body>
 </html>

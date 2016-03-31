@@ -1,6 +1,9 @@
 #encoding:utf-8
 module Admin
 class MeetingsController < Admin::BaseController
+
+	before_action :set_meeting, only: [:edit, :update, :destroy]
+	
 	layout 'admin'
 	def index
 
@@ -9,18 +12,16 @@ class MeetingsController < Admin::BaseController
 
 	def new
 	    @meeting = Meeting.new
-	    render layout: false
 	 end
 
-	def edit
-	end
+	def edit ()	end
 
 	def create
 		@meeting = Meeting.new(meeting_params)
 		if @meeting.save    
-		    redirect_to root_url
+		    redirect_to @meeting
 		else
-		  redirect_to admin_path
+		  	new_admin_meeting_path
 		end
 	end
 
@@ -28,7 +29,7 @@ class MeetingsController < Admin::BaseController
 	def update
 		respond_to do |format|
 		  if @meeting.update(meeting_params)
-		    format.html { redirect_to @meeting, notice: 'meeting was successfully updated.' }
+		    format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
 		    format.json { render :show, status: :ok, location: @meeting }
 		  else
 		    format.html { render :edit }
@@ -41,7 +42,7 @@ class MeetingsController < Admin::BaseController
 	def destroy
 		@meeting.destroy
 		respond_to do |format|
-		  format.html { redirect_to meetings_url, notice: 'meeting was successfully destroyed.' }
+		  format.html { redirect_to admin_meetings_url, notice: 'Meeting was successfully destroyed.' }
 		  format.json { head :no_content }
 		end
 	end
@@ -55,8 +56,7 @@ class MeetingsController < Admin::BaseController
 
 
 	def meeting_params
-		params.require(:meeting).permit(:name, :email, :password, :password_digest, :username, :role, :avatar, :mobile, :sex,
-	                             :password_confirmation)
+		params.require(:meeting).permit(:title_en,:title_zh,:location_zh,:location_en,:slug,:end_time,:start_time)
 	end
 end
 end

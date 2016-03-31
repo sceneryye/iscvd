@@ -24,6 +24,20 @@
             <%= f.text_field :name, class: 'form-control' %>
           </div>
         </div>     
+         <div class="form-group">
+          <%= f.label :layout, 'layout', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :layout, class: 'form-control' %>
+          </div>
+        </div>     
+         <div class="form-group">
+          <%= f.label :type, 'type', class: 'col-md-2 control-label' %>
+         
+          <div class="col-md-10">
+            <%= f.text_field :type, class: 'form-control' %>
+          </div>
+        </div>     
       <div class="form-group"> 
         <div class="submit-button col-md-6 col-md-offset-3">
           <%= f.submit 'Submit', class: 'btn btn-primary form-control' %>

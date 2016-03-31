@@ -1,13 +1,19 @@
 class Meeting < ActiveRecord::Base
 
+	extend FriendlyId
+	
+	friendly_id :url, :use => [:slugged, :finders]
+
 	has_many :meeting_attendees, dependent: :destroy
 	has_many :pages, dependent: :destroy
 
-	validates :title,  presence: true
+	validates :title_en,  presence: true
+	validates :title_zh,  presence: true
 	validates :end_time, presence: true
 	validates :start_time, presence: true
 	validates :slug, presence: true
-	validates :location, presence: true
+	validates :location_en, presence: true
+	validates :location_zh, presence: true
 
 
 	default_scope {order 'created_at DESC'}
