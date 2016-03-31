@@ -27,7 +27,7 @@ module Admin
 		def update
 			respond_to do |format|
 			  if @page_category.update(page_category_params)
-			    format.html { redirect_to @page_category, notice: 'Page_category was successfully updated.' }
+			    format.html { redirect_to admin_page_categories_path, notice: 'Page_category was successfully updated.' }
 			    format.json { render :show, status: :ok, location: @page_category }
 			  else
 			    format.html { render :edit }
@@ -39,7 +39,7 @@ module Admin
 		def destroy
 			@page_category.destroy
 			respond_to do |format|
-			  format.html { redirect_to Page_category_category_url, notice: 'Page_category was successfully destroyed.' }
+			  format.html { redirect_to admin_page_categories_path, notice: 'Page_category was successfully destroyed.' }
 			  format.json { head :no_content }
 			end
 		end
