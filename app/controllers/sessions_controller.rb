@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
       login user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = '您已成功登录!'
-      Rails.logger.info '-------------login ok'
+      if params[:remember_me] == 1
+        remember user
+      end
       if params[:from] == 'ajax'
         return render json: {msg: 'ok', id: user.id}
       else

@@ -48,7 +48,7 @@
                        name="session[password]">
             </div>
             <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me" class="remember-me"> Remember me
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
             <button class="btn btn-primary btn-lg btn-block submit-button">Login</button>
@@ -64,11 +64,16 @@
         var email = $('.email-value').val();
         var password = $('.passwd-value').val();
         var url = '/session';
+        var remember_me = 0;
+        if($('.remember-me').is(':checked')) {
+            remember_me = 1;
+        }
         $.ajax({
             url: url,
             type: 'post',
             data: {
                 from: 'ajax',
+                remember_me: remember_me,
                 session: {
                     email: email,
                     password: password

@@ -9,7 +9,6 @@ class Admin::SessionsController < Admin::BaseController
   def create
   	email  = params[:session][:email]
   	password = params[:session][:password]
-    
     admin =  User.admin_authenticate(email,password)
    #  if admin
    #          admin_sign_in admin
