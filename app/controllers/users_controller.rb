@@ -79,7 +79,8 @@ class UsersController < ApplicationController
   def send_emails
     email = params[:email]
     id = params[:email_id]
-    (UserMailer.send_group_emails email, id).deliver_now
+    last = params[:last]
+    (UserMailer.send_group_emails email, id, last).deliver_now
     render json: {len: params[:len]}.to_json
   end
 

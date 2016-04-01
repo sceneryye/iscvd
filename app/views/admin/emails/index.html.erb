@@ -55,7 +55,11 @@
       var email = "<%= email %>";
       var index = "<%= index %>";
       var counts = 0;
-      $.post(url, {email: email, len: index, email_id: emailId}, function (e) {
+      var last = 'fasle';
+      if(index == len - 1) {
+        last = 'ture';
+      }
+      $.post(url, {email: email, len: index, email_id: emailId, last: last}, function (e) {
         counts += 1;
         if (counts == len) {
           $('.sending-emails').addClass('hidden');

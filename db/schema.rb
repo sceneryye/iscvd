@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331014802) do
+ActiveRecord::Schema.define(version: 20160401080057) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20160331014802) do
     t.text     "content",    limit: 65535, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "maillogs", force: :cascade do |t|
+    t.string   "users",        limit: 255
+    t.integer  "email_id",     limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "sending_type", limit: 255
   end
 
   create_table "meeting_attendees", force: :cascade do |t|
