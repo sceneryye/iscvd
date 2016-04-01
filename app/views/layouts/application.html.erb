@@ -19,6 +19,7 @@
       <!-- original content goes in this container -->
       <div class="off-canvas-content" data-off-canvas-content>    
         <%= yield %>
+        <%= yield :content %>
       </div>
 
       <%=render '/layouts/footer'%>

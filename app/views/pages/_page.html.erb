@@ -1,16 +1,15 @@
 <div class="row medium-8 large-7 columns">
-<div class="blog-post">
-<h4><%=page.title%></h4>
-<h4><small><%=page.updated_at%></small></h4>
+	<div class="blog-post">
+		<h4><%=page.title%></h4>
+		<h4><small><%=page.updated_at%></small></h4>
 
-<%=image_tag page.head_pics,:alt=>page.title, class: "thumbnail"%>
-	<p><%= raw(page.body) %></p>
-<div class="callout">
-<ul class="menu simple">
-<li><a href="#">Author: <%=page.author%></a></li>
-<li><a href="#">Comments: 3</a></li>
-</ul>
-</div>
-</div>
-
+		<%=image_tag page.head_pics,:alt=>page.title, class: "thumbnail"%>
+		<p><%= raw(page.body) %></p>
+		<div class="callout">
+			<ul class="menu simple">
+			<li><a href="#">Author: <%=page.author%></a></li>
+			<li><a href="#">Comments: 3</a></li>
+			</ul>
+		</div>
+	</div>
 </div>

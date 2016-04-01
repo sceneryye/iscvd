@@ -38,7 +38,13 @@ RailsOnForum::Application.routes.draw do
   resource :home, only: [:index]
   resources :donates, only:[:index,:show,:new,:create]
   resources :meetings, only: [:index,:show]
-  resources :pages, only: [:index,:show]
+  resources :pages, only: [:show] do
+    collection do
+      get 'news'
+    end
+  end
+
+  
 
   root 'home#index'
 end
