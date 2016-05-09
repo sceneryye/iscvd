@@ -376,12 +376,6 @@ zh:
   event_address: 活动地址
   content: 内容
   duration: 持续时间
-  day: 天
-  hour: 时
-  minute: 分
-  month: 月
-  second: 秒
-  year: 年
   contact: 联系方式
   free: 免费
   remaining_time: 剩余时间
@@ -396,3 +390,4 @@ zh:
   meetings: 会议
   donate: 捐款
   about_us: 关于我们
+  member_sign_in: 会员登录

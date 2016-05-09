@@ -13,7 +13,6 @@ class DonatesController < ApplicationController
 
 	def new
 	    @donate = Donate.new
-	    render layout: false
 	 end
 
 	def edit
@@ -24,7 +23,7 @@ class DonatesController < ApplicationController
 		if @donate.save    
 		    redirect_to root_url
 		else
-		  redirect_to admin_path
+		  render 'new'
 		end
 	end
 
@@ -38,7 +37,7 @@ class DonatesController < ApplicationController
 
 
 	def donate_params
-		params.require(:donate).permit(:title, :language, :body, :head_pics, :slug, :from, :author, :layout, :Donate_categories_id,:type,:donate_id)
+		params.require(:donate).permit(:amount,:full_name)
 	end
 end
 

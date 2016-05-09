@@ -74,7 +74,7 @@
         <%end%>    
         <li><%=link_to t(:home),root_path,class:'button expanded'%></li>
         <li><%=link_to t(:meetings),meetings_path,class:'button expanded'%></li>
-        <li><%=link_to t(:news),pages_path,class:'button expanded'%></li>        
+        <li><%=link_to t(:news),news_pages_path,class:'button expanded'%></li>        
         <li><%=link_to t(:donate),new_donate_path,class:'button expanded'%></li>
         <li><%=link_to t(:about_us),page_path('aboutus'),class:'button expanded'%></li>
         <li>
@@ -104,7 +104,7 @@
           <li><%=link_to t(:home),root_path%></li>
           <li><%=link_to t(:about_us),page_path('aboutus'),class:'is-active'%></a></li>
           <li><%=link_to t(:meetings),meetings_path%></a></li>
-          <li><%=link_to t(:news),pages_path%></a></li>
+          <li><%=link_to t(:news),news_pages_path%></a></li>
         </ul>
       </div>
     </div>
