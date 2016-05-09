@@ -1,8 +1,8 @@
 <div class="reveal small" id="login_register" data-reveal  datdata-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
   <div class="center row">
     <ul class="tabs" data-tabs id="sign-in-up">
-      <li class="tabs-title"><a href="#register">Sign Up</a></li>
-      <li class="tabs-title is-active"><a href="#login" aria-selected="true">Sign In</a></li>
+      <li class="tabs-title"><a href="#register"><%=t(:sign_up)%></a></li>
+      <li class="tabs-title is-active"><a href="#login" aria-selected="true"><%=t(:sign_in)%></a></li>
     </ul>
     <div class="tabs-content" data-tabs-content="sign-in-up">
       <div class="tabs-panel" id="register">       
@@ -10,7 +10,7 @@
               <div class="row">
                 <div class="large-12 columns">
                   <div class="signup-panel">
-                    <p class="welcome">Hello, new user!</p> 
+                    <p class="welcome"><%=t(:hello_new_user)%></p> 
                     <% @user = User.new%>                  
                     <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
                       <% if @user.errors.any? %>
@@ -28,7 +28,15 @@
                           <span class="prefix"><i class="fi-torso"></i></span>
                         </div>
                         <div class="small-10  columns">
-                         <%= f.text_field :full_name,placeholder:"Full Name" %> 
+                         <%= f.text_field :full_name,placeholder: t(:full_name) %> 
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="small-2 columns">
+                          <span class="prefix"><i class="fi-torso"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <%= f.text_field :sex,placeholder:t(:sex) %> 
                         </div>
                       </div>
                       <div class="row collapse">
@@ -36,7 +44,7 @@
                           <span class="prefix"><i class="fi-mail"></i></span>
                         </div>
                         <div class="small-10  columns">
-                          <%= f.text_field :email,placeholder:"Email" %> 
+                          <%= f.text_field :email,placeholder:t(:email) %> 
                         </div>
                       </div>
                       <div class="row collapse">
@@ -44,7 +52,23 @@
                           <span class="prefix"><i class="fi-mail"></i></span>
                         </div>
                         <div class="small-10  columns">
-                          <%= f.text_field :mobile,placeholder:"Mobile" %> 
+                          <%= f.text_field :mobile,placeholder:t(:mobile) %> 
+                        </div>
+                      </div>
+                       <div class="row collapse">
+                        <div class="small-2 columns">
+                          <span class="prefix"><i class="fi-mail"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <%= f.text_field :institute_hospital,placeholder: t(:institute_hospital) %> 
+                        </div>
+                      </div>
+                       <div class="row collapse">
+                        <div class="small-2 columns">
+                          <span class="prefix"><i class="fi-mail"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                          <%= f.text_field :address,placeholder:t(:address) %> 
                         </div>
                       </div>
                       <div class="row collapse">
@@ -52,7 +76,7 @@
                           <span class="prefix"><i class="fi-lock"></i></span>
                         </div>
                         <div class="small-10 columns ">
-                          <%= f.password_field :password,placeholder:"Password"  %>
+                          <%= f.password_field :password,placeholder:t(:password)  %>
                         </div>
                       </div>
                       <div class="row collapse">
@@ -60,13 +84,13 @@
                           <span class="prefix"><i class="fi-lock"></i></span>
                         </div>
                         <div class="small-10 columns ">
-                          <%= f.password_field :password_confirmation,placeholder:"password_confirmation"  %>
+                          <%= f.password_field :password_confirmation,placeholder:t(:password_confirmation)  %>
                         </div>
                       </div>
                       <div class="row collapse">
                         <div class="small-12 columns ">
                           <!-- <input id="show-password" type="checkbox"><label for="show-password">Show password</label><br> -->
-                          <%= f.submit 'Sign Up', class: 'button expanded' %>
+                          <%= f.submit t(:sign_up), class: 'button expanded' %>
                         </div>
                       </div>
                     <% end %>                  
@@ -80,14 +104,14 @@
               <div class="row">
                 <div class="large-12 columns">
                   <div class="signup-panel">
-                    <p class="welcome">Welcome back!</p>
+                    <p class="welcome"><%=t(:welcome_back)%></p>
                     <%= form_for :session, url: session_path, html: {class: 'form-horizontal'} do |f| %>
                       <div class="row collapse">
                         <div class="small-2 columns">
                           <span class="prefix"><i class="fi-mail"></i></span>
                         </div>
                         <div class="small-10  columns">
-                          <%= f.text_field :email,placeholder:"Email" %> 
+                          <%= f.text_field :email,placeholder:t(:email) %> 
                         </div>
                       </div>
                       <div class="row collapse">
@@ -95,13 +119,13 @@
                           <span class="prefix"><i class="fi-lock"></i></span>
                         </div>
                         <div class="small-10 columns ">
-                          <%= f.password_field :password,placeholder:"Password"  %>
+                          <%= f.password_field :password,placeholder:t(:password)%>
                         </div>
                       </div>
                       <%= f.check_box :remember_me %>
-                      <span class="remember-me">Remember Me</span>
-                      <%= f.submit 'Sign In', class: 'button expanded' %>
-                      <a href="#">Forgot your password?</a><br>                    
+                      <span class="remember-me"><%=t(:remember_me)%></span>
+                      <%= f.submit t(:sign_in), class: 'button expanded' %>
+                      <a href="#"><%=t(:forgot_your_password)%></a><br>                    
                     <% end %> 
                   </div>
                 </div>

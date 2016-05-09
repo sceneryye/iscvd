@@ -320,11 +320,8 @@ zh:
   new_comment: 添加评论
   new_participant: 立即报名
   title: 标题
-  goods_unit: 商品单位
-  please_choose_event_duration: 请输入活动时间
   start_time: 开始时间
   end_time: 结束时间
-  new_groupbuy:  新增团购
   pay: 立即支付
   goings: 报名
   rsvp: 报名
@@ -341,15 +338,27 @@ zh:
   name: 姓名
   mobile: 手机
   address: 地址
+  hello_new_user: 您好，新用户！
+  full_name: 真实姓名
+  email: 电子邮箱
+  institute_hospital: 工作单位
+  sex: 性别
+  area: 地区
+  address: 地址
+  password: 密码
+  password_confirmation: 重复密码
+  welcome_back: 欢迎回来
+  remember_me: 记住我
+  forgot_your_password: 忘记密码？
+  sign_in: 登录
+  sign_up: 注册
   remark: 备注
-  group_manage: 群组管理
   welcome: 欢迎
   save: 省
   amount: 数量
   please_choose_groupbuy_duration: 请选择团购期间
   home: 首页
   count_down: 倒计时
-  groupbuy_end: 团购已结束
   day: 天
   people: 人
   edit: 编辑

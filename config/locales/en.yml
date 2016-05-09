@@ -280,24 +280,8 @@ en:
   delete: Delete
   comment: Comment
   logout: Logout
-  no_events: There are no events yet.
-  no_topics: There are no topics yet.
-  no_groupbuys: There are no groupbuys yet.
-  should_be_int: Number should be a positive integer!
-  send_to: Send to
-  tracking_number: Tracking No.
-  histroy: Histroy
   next_page: Next Page
   pre_page: Previous Page
-  event_end: Past!
-  nomore: No more comments
-  detail_address: Detail address
-  coordinate: Coordinate
-  event_address: Event address
-  new_groupbuy: Create Groupbuying Deal
-  new_event: Create New Meetup
-  new_topic: Create New Disscusion
-  content: Content
   durantion: Duration
   day: Day
   hour: Hour
@@ -315,8 +299,18 @@ en:
   join_now: Join Now!
   pay_success: Paid Successfully!
   apply_success: Apply Successfully!
-  consignee: Consignee
-  discount: Discount
-  freightage: Freightage
-  total_price: Total Price
-  contact_master: Contact Master
+
+  hello_new_user: Hello, new user!
+  full_name: Full Name
+  email: Email
+  institute_hospital: Institute/Hospital
+  sex: Sex
+  area: Area
+  address: Address
+  password: Password
+  password_confirmation: Password Confirmation
+  welcome_back: Welcome back!
+  remember_me: Remember Me
+  forgot_your_password: Forgot your password?
+  sign_in: Sign In
+  sign_up: Sign Up
