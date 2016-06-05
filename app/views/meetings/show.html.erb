@@ -1,2 +1,15 @@
 <% provide :title, @title %>
-<%= render :partial => "meetings/meeting",  :locals => {:meeting => @meeting} %>
+
+<div class="row medium-8 large-7 columns">
+<div class="blog-post">
+	<h4><%=@title%></h4>
+	<h4><small><%=l meeting.start_time%>--<%=l meeting.end_time%></small></h4>
+
+
+	<div class="callout">
+	<p><%=  meeting.location_en %></p>
+	</div>
+</div>
+<%=link_to t(:attent),new_meeting_attendee_path %>
+
+</div>

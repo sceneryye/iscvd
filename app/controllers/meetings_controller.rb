@@ -8,7 +8,7 @@ class MeetingsController < ApplicationController
 
 	def show
 		@meeting  = Meeting.find(params[:id])
-		render :layout=> @meeting.layout.present? ? @meeting.layout : 'application'
+		# render :layout=> @meeting.layout.present? ? @meeting.layout : 'application'
 	end
 end
 

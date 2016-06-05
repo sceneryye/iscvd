@@ -38,6 +38,7 @@ RailsOnForum::Application.routes.draw do
   resource :home, only: [:index]
   resources :donates, only:[:index,:show,:new,:create]
   resources :meetings, only: [:index,:show]
+  resources :meeting_attendees
   resources :pages, only: [:show] do
     collection do
       get 'news'
