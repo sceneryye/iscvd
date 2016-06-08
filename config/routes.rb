@@ -11,7 +11,11 @@ RailsOnForum::Application.routes.draw do
 
     resources :reports
     resources :meetings
-    resources :meeting_attendees, only:[:index,:show]
+    resources :meeting_attendees do
+      #, only:[:index,:show]
+       post "export", :on=>:collection
+      post "import", :on=>:collection
+    end
     resources :pages
     resources :page_categories, only: [:index,:new,:create,:edit,:update,:destory]
     resources :users

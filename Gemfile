@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -24,6 +24,8 @@ gem 'rest-client'
   # gem 'foundation-icons-sass-rails'
   #gem 'foundation_form_builder'
 #end
+gem 'axlsx'
+gem 'iconv'
 
 
 gem 'bcrypt'
